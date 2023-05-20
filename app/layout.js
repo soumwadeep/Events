@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Footer from "@/components/Footer";
-
 export const metadata = {
   title: "Soumwadeep's Event Planner",
   description: "World's Most Simplest And Fastest Event Planner Ever Created!",
