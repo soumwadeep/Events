@@ -7,6 +7,20 @@ body {
   background-attachment: fixed;
 }
 
+.Home {
+  margin-bottom: 10vh;
+}
+
+.imgfix {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
+  margin-bottom: 5vh;
+}
+
 /* Pc Navbar */
 .mobile-navbar {
   display: none;
@@ -68,4 +82,24 @@ body {
 .footer h5 {
   font-weight: 700 !important;
   margin-bottom: 10vh !important;
+}
+
+/* Vertically Align Centre */
+.outer {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inner {
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+  width: 100%;
+  /* max-width: 400px; */
 }
