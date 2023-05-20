@@ -30,16 +30,14 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
               <Link
-                className={`nav-link ${
-                  pathname === "/" ? "active" : "nav-link"
-                }`}
+                className={`nav-link ${pathname === "/" ? "active" : ""}`}
                 href="/"
               >
                 Home
               </Link>
               <Link
                 className={`nav-link ${
-                  pathname === "/Features" ? "active" : "nav-link"
+                  pathname === "/Features" ? "active" : ""
                 }`}
                 href="/Features"
               >
@@ -47,7 +45,7 @@ const Navbar = () => {
               </Link>
               <Link
                 className={`nav-link ${
-                  pathname === "/Pricing" ? "active" : "nav-link"
+                  pathname === "/Pricing" ? "active" : ""
                 }`}
                 href="/Pricing"
               >
@@ -55,16 +53,14 @@ const Navbar = () => {
               </Link>
               <Link
                 className={`nav-link ${
-                  pathname === "/Contact" ? "active" : "nav-link"
+                  pathname === "/Contact" ? "active" : ""
                 }`}
                 href="/Contact"
               >
                 Contact
               </Link>
               <Link
-                className={`nav-link ${
-                  pathname === "/SignUp" ? "active" : "nav-link"
-                }`}
+                className={`nav-link ${pathname === "/SignUp" ? "active" : ""}`}
                 href="/SignUp"
               >
                 Sign Up
@@ -76,39 +72,31 @@ const Navbar = () => {
       {/* Mobile Navbar */}
       <nav className="mobile-navbar fixed-bottom">
         <Link
-          className={`nav-link ${pathname === "/" ? "active" : "nav-link"}`}
+          className={`nav-link ${pathname === "/" ? "active" : ""}`}
           href="/"
         >
           <i className="fa-solid fa-house icons"></i>
         </Link>
         <Link
-          className={`nav-link ${
-            pathname === "/Features" ? "active" : "nav-link"
-          }`}
+          className={`nav-link ${pathname === "/Features" ? "active" : ""}`}
           href="/Features"
         >
           <i className="fa-solid fa-circle-info icons"></i>
         </Link>
         <Link
-          className={`nav-link ${
-            pathname === "/Pricing" ? "active" : "nav-link"
-          }`}
+          className={`nav-link ${pathname === "/Pricing" ? "active" : ""}`}
           href="/Pricing"
         >
           <i className="fa-solid fa-dollar-sign icons"></i>
         </Link>
         <Link
-          className={`nav-link ${
-            pathname === "/Contact" ? "active" : "nav-link"
-          }`}
+          className={`nav-link ${pathname === "/Contact" ? "active" : ""}`}
           href="/Contact"
         >
           <i className="fa-solid fa-headset icons"></i>
         </Link>
         <Link
-          className={`nav-link ${
-            pathname === "/SignUp" ? "active" : "nav-link"
-          }`}
+          className={`nav-link ${pathname === "/SignUp" ? "active" : ""}`}
           href="/SignUp"
         >
           <i className="fa-solid fa-user-plus icons"></i>

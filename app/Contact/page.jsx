@@ -1,9 +1,14 @@
+import Head from "next/head";
+
 const page = () => {
   return (
     <div>
-      <h1 className="text-center">Our Pricing</h1>
+      <Head>
+        <title>Contact Us</title>
+      </Head>
+      <h1 className="text-center">Contact Us</h1>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

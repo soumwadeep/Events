@@ -35,7 +35,7 @@ body {
 
 /* Mob Navbar */
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 992px) {
   .pc-navbar {
     display: none !important;
   }
