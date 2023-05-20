@@ -7,14 +7,27 @@ body {
   background-attachment: fixed;
 }
 
+/* Navbar */
 .navbar {
   font-weight: 700 !important;
   font-size: 22px;
+  text-align: center;
 }
 
 .active {
   border-bottom: 2px solid #f907fc !important;
-  /* color: #f907fc!important; */
   border-radius: 5px;
-  /* opacity: 80%!important; */
+}
+
+.logo
+{
+  width: 100%;
+  height: auto ;
+  max-width: 40px;
+}
+
+/* Footer */
+.footer h5
+{
+  font-weight: 700!important;
 }
