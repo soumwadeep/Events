@@ -9,7 +9,8 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg">
+      {/* Pc Navbar */}
+      <nav className="navbar navbar-expand-lg pc-navbar sticky-top">
         <div className="container-fluid">
           <Link className="navbar-brand" href="/">
             <Image src={logo} alt="logo" className="logo" />
@@ -29,14 +30,16 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
               <Link
-                className={`nav-link ${pathname === "/" ? "active" : ""}`}
+                className={`nav-link ${
+                  pathname === "/" ? "active" : "nav-link"
+                }`}
                 href="/"
               >
                 Home
               </Link>
               <Link
                 className={`nav-link ${
-                  pathname === "/Features" ? "active" : ""
+                  pathname === "/Features" ? "active" : "nav-link"
                 }`}
                 href="/Features"
               >
@@ -44,7 +47,7 @@ const Navbar = () => {
               </Link>
               <Link
                 className={`nav-link ${
-                  pathname === "/Pricing" ? "active" : ""
+                  pathname === "/Pricing" ? "active" : "nav-link"
                 }`}
                 href="/Pricing"
               >
@@ -52,14 +55,16 @@ const Navbar = () => {
               </Link>
               <Link
                 className={`nav-link ${
-                  pathname === "/Contact" ? "active" : ""
+                  pathname === "/Contact" ? "active" : "nav-link"
                 }`}
                 href="/Contact"
               >
                 Contact
               </Link>
               <Link
-                className={`nav-link ${pathname === "/SignUp" ? "active" : ""}`}
+                className={`nav-link ${
+                  pathname === "/SignUp" ? "active" : "nav-link"
+                }`}
                 href="/SignUp"
               >
                 Sign Up
@@ -67,6 +72,47 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+      </nav>
+      {/* Mobile Navbar */}
+      <nav className="mobile-navbar fixed-bottom">
+        <Link
+          className={`nav-link ${pathname === "/" ? "active" : "nav-link"}`}
+          href="/"
+        >
+          <i className="fa-solid fa-house icons"></i>
+        </Link>
+        <Link
+          className={`nav-link ${
+            pathname === "/Features" ? "active" : "nav-link"
+          }`}
+          href="/Features"
+        >
+          <i className="fa-solid fa-circle-info icons"></i>
+        </Link>
+        <Link
+          className={`nav-link ${
+            pathname === "/Pricing" ? "active" : "nav-link"
+          }`}
+          href="/Pricing"
+        >
+          <i className="fa-solid fa-dollar-sign icons"></i>
+        </Link>
+        <Link
+          className={`nav-link ${
+            pathname === "/Contact" ? "active" : "nav-link"
+          }`}
+          href="/Contact"
+        >
+          <i className="fa-solid fa-headset icons"></i>
+        </Link>
+        <Link
+          className={`nav-link ${
+            pathname === "/SignUp" ? "active" : "nav-link"
+          }`}
+          href="/SignUp"
+        >
+          <i className="fa-solid fa-user-plus icons"></i>
+        </Link>
       </nav>
     </div>
   );
