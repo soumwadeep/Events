@@ -1,9 +1,9 @@
 import Image from "next/image";
-import event1 from "@/img/event1.jpeg";
-import event2 from "@/img/event2.jpeg";
-import event3 from "@/img/event3.jpeg";
-import event4 from "@/img/event4.jpeg";
-import event5 from "@/img/event5.jpeg";
+import event1 from "@/img/event1.webp";
+import event2 from "@/img/event2.webp";
+import event3 from "@/img/event3.webp";
+import event4 from "@/img/event4.webp";
+import event5 from "@/img/event5.webp";
 const page = () => {
   return (
     <div className="Home">
