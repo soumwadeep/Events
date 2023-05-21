@@ -124,6 +124,10 @@ body {
   {
     min-height: 0;
   }
+  .card-img-top
+  {
+    padding: 10px;
+  }
 }
 
 /* Footer */
