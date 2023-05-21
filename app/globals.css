@@ -7,6 +7,16 @@ body {
   background-attachment: fixed;
 }
 
+input {
+  background: transparent !important;
+  border: 1px solid #f907fc !important;
+}
+
+textarea {
+  background: transparent !important;
+  border: 1px solid #f907fc !important;
+}
+
 .imgfix {
   width: 100%;
   height: auto;
@@ -15,6 +25,10 @@ body {
   -moz-box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
   box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
   margin-bottom: 5vh;
+}
+
+.nav-link {
+  cursor: pointer;
 }
 
 /* Pc Navbar */
@@ -79,7 +93,7 @@ body {
     background-color: #f907fc;
     background-image: linear-gradient(315deg, #f907fc 0%, #05d6d9 74%);
     background-attachment: fixed;
-    bottom: 10px !important;
+    /* bottom: 10px !important; */
     padding-top: 20px;
     border-radius: 20px;
     -webkit-box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
@@ -112,21 +126,21 @@ body {
   box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
   min-height: 750px;
 }
-.card-img-top
-{
+
+.card-img-top {
   background-color: bisque;
   padding: 40px;
   border-radius: 20px;
 }
 
-@media only screen and (max-width: 992px){
-  .card
-  {
+@media only screen and (max-width: 992px) {
+  .card {
     min-height: 0;
   }
-  .card-img-top
-  {
-    padding: 10px;
+
+  .card-img-top {
+    padding: 5px;
+    max-height: 400px;
   }
 }
 
