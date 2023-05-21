@@ -5,9 +5,11 @@ import event3 from "@/img/event3.webp";
 import event4 from "@/img/event4.webp";
 import event5 from "@/img/event5.webp";
 import logo from "@/img/logo.webp";
+import Navbar from "@/components/Navbar";
 const page = () => {
   return (
     <div className="Home">
+      <Navbar />
       <div className="row">
         <div className="col-sm">
           <div className="outer">

@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Footer from "@/components/Footer";
 export const metadata = {
@@ -22,7 +21,6 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="container">
-        <Navbar />
         {children}
         <Footer />
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
