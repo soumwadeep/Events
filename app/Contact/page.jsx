@@ -33,12 +33,23 @@ const page = () => {
                   />
                   <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="Name"
+                      id="exampleFormControlInput1"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">
                       Your Email ID
                     </label>
                     <input
                       type="email"
                       class="form-control"
-                      name="Name"
+                      name="Email ID"
                       id="exampleFormControlInput1"
                       placeholder="name@example.com"
                     />
