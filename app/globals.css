@@ -47,9 +47,26 @@ body {
   display: flex !important;
 }
 
+.mob-head {
+  display: none;
+}
+
 /* Mob Navbar */
 
 @media only screen and (max-width: 992px) {
+  .mob-head {
+    display: block;
+    color: #f907fc;
+    font-weight: 700 !important;
+    margin-bottom: 20px;
+  }
+
+  .mob-logo {
+    width: 100%;
+    height: auto;
+    max-width: 40px;
+  }
+
   .pc-navbar {
     display: none !important;
   }
@@ -66,22 +83,28 @@ body {
     background-image: linear-gradient(315deg, #f907fc 0%, #05d6d9 74%);
     background-attachment: fixed;
     bottom: 10px !important;
-    padding: 10px;
+    padding-top: 20px;
     border-radius: 20px;
     -webkit-box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
     box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
   }
+
+  body {
+    margin-top: 5vh !important;
+  }
 }
 
 .icons {
-  font-size: 32px !important;
+  font-size: 30px !important;
+  display: flex !important;
+  justify-content: space-around;
 }
 
 /* Footer */
 .footer h5 {
   font-weight: 700 !important;
-  margin-bottom: 10vh !important;
+  margin-bottom: 20vh !important;
 }
 
 /* Vertically Align Centre */

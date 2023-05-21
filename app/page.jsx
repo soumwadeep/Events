@@ -4,6 +4,7 @@ import event2 from "@/img/event2.webp";
 import event3 from "@/img/event3.webp";
 import event4 from "@/img/event4.webp";
 import event5 from "@/img/event5.webp";
+import logo from "@/img/logo.webp";
 const page = () => {
   return (
     <div className="Home">
@@ -12,6 +13,10 @@ const page = () => {
           <div className="outer">
             <div className="middle">
               <div className="inner">
+                <div className="text-center mob-head">
+                  <Image src={logo} alt="Logo" className="mob-logo" />
+                  <h1>Sg Events</h1>
+                </div>
                 <h2 style={{ color: "#d905dc" }}>
                   Unleash the Magic of Extraordinary Events
                 </h2>

@@ -75,31 +75,37 @@ const Navbar = () => {
           className={`nav-link ${pathname === "/" ? "active" : ""}`}
           href="/"
         >
-          <i className="fa-solid fa-house icons"></i>
+          <i className="fa-solid fa-house icons"></i><br/>
+          <h5>Home</h5>
         </Link>
         <Link
           className={`nav-link ${pathname === "/Features" ? "active" : ""}`}
           href="/Features"
         >
-          <i className="fa-solid fa-circle-info icons"></i>
+          <i className="fa-solid fa-bolt icons"></i><br/>
+          <h5>Features</h5>
         </Link>
         <Link
           className={`nav-link ${pathname === "/Pricing" ? "active" : ""}`}
           href="/Pricing"
         >
           <i className="fa-solid fa-dollar-sign icons"></i>
+          <br/>
+          <h5>Pricing</h5>
         </Link>
         <Link
           className={`nav-link ${pathname === "/Contact" ? "active" : ""}`}
           href="/Contact"
         >
-          <i className="fa-solid fa-headset icons"></i>
+          <i className="fa-solid fa-headset icons"></i><br/>
+          <h5>Contact</h5>
         </Link>
         <Link
           className={`nav-link ${pathname === "/SignUp" ? "active" : ""}`}
           href="/SignUp"
         >
-          <i className="fa-solid fa-user-plus icons"></i>
+          <i className="fa-solid fa-user-plus icons"></i><br/>
+          <h5>Sign Up</h5>
         </Link>
       </nav>
     </div>
