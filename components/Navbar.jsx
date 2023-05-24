@@ -49,7 +49,7 @@ const Navbar = () => {
                 }`}
                 href="/Pricing"
               >
-                Plans
+                Pricing
               </Link>
               <Link
                 className={`nav-link ${
@@ -97,7 +97,7 @@ const Navbar = () => {
         >
           <i className="fa-solid fa-dollar-sign icons"></i>
           <br/>
-          <h5>Pricing</h5>
+          <h5>Plans</h5>
         </Link>
         <Link
           className={`nav-link ${pathname === "/Contact" ? "active" : ""}`}
