@@ -49,7 +49,7 @@ const Navbar = () => {
                 }`}
                 href="/Pricing"
               >
-                Pricing
+                Plans
               </Link>
               <Link
                 className={`nav-link ${
