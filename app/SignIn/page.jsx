@@ -79,10 +79,10 @@ const page = () => {
                   </div>
                   <button
                     type="submit"
-                    class="btn btn-primary"
+                    class="btn btn-primary mb-3"
                     onClick={loginUser}
                   >
-                    Submit
+                    Sign In
                   </button>
                 </form>
               </div>
@@ -90,7 +90,12 @@ const page = () => {
           </div>
         </div>
         <div className="col-sm">
-          <Image src={loginimg} alt="Login" className="imgfix" />
+          <Image
+            src={loginimg}
+            alt="Login"
+            className="imgfix"
+            priority={true}
+          />
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ const Sidebar = () => {
   return (
     <div>
       <button
-        className="btn btn-primary"
+        className="btn btn-warning"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasWithBothOptions"

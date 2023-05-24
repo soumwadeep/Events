@@ -169,3 +169,13 @@ textarea {
   width: 100%;
   /* max-width: 400px; */
 }
+
+/* li style */
+li {
+  list-style: none;
+}
+
+.ticks {
+  color: green;
+  font-size: 25px;
+}

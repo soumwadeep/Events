@@ -65,6 +65,12 @@ const Navbar = () => {
               >
                 Sign Up
               </Link>
+              <Link
+                className={`nav-link ${pathname === "/SignIn" ? "active" : ""}`}
+                href="/SignIn"
+              >
+                Sign In
+              </Link>
             </div>
           </div>
         </div>
@@ -106,6 +112,13 @@ const Navbar = () => {
         >
           <i className="fa-solid fa-user-plus icons"></i><br/>
           <h5>Sign Up</h5>
+        </Link>
+        <Link
+          className={`nav-link ${pathname === "/SignIn" ? "active" : ""}`}
+          href="/SignIn"
+        >
+          <i className="fa-solid fa-sign-in icons"></i><br/>
+          <h5>Sign In</h5>
         </Link>
       </nav>
     </div>

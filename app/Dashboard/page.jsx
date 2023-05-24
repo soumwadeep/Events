@@ -1,7 +1,11 @@
+import Sidebar from "@/components/DashboardComponents/Sidebar"
+
 const page = () => {
   return (
     <div>
-      <h1>Hi Dashboard!</h1>
+      <Sidebar/>
+      <h1>Instructions:</h1>
+      
     </div>
   )
 }

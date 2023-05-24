@@ -24,24 +24,29 @@ const page = () => {
               <h2>Free</h2>
               <ul className="card-text">
                 <li>
-                  Event Creation and Management: Effortlessly create and manage
+                  <i className="fa-solid fa-check ticks"></i>&nbsp; Event
+                  Creation and Management: Effortlessly create and manage
                   events, stress-free!
                 </li>
                 <li>
-                  Basic RSVP Management: Keep track of guest responses and
-                  manage RSVPs like a pro.
+                  <i className="fa-solid fa-check ticks"></i>&nbsp; Basic RSVP
+                  Management: Keep track of guest responses and manage RSVPs
+                  like a pro.
                 </li>
                 <li>
-                  Standard Ticketing: Sell tickets online and manage inventory
+                  <i className="fa-solid fa-check ticks"></i>&nbsp; Standard
+                  Ticketing: Sell tickets online and manage inventory
                   hassle-free.
                 </li>
                 <li>
-                  Limited Event Website Customization: Personalize your event
-                  website and make it stand out, even with limited options.
+                  <i className="fa-solid fa-check ticks"></i>&nbsp; Limited
+                  Event Website Customization: Personalize your event website
+                  and make it stand out, even with limited options.
                 </li>
                 <li>
-                  Email Support: Our support team is just an email away to
-                  provide you with timely assistance.
+                  <i className="fa-solid fa-check ticks"></i>&nbsp; Email
+                  Support: Our support team is just an email away to provide you
+                  with timely assistance.
                 </li>
               </ul>
             </div>
@@ -59,25 +64,29 @@ const page = () => {
               <h2>Premium</h2>
               <ul className="card-text">
                 <li>
-                  Advanced Event Management: Unleash the full potential of your
-                  events with advanced features that make planning a breeze.
+                  <i className="fa-solid fa-check ticks"></i>&nbsp; Advanced
+                  Event Management: Unleash the full potential of your events
+                  with advanced features that make planning a breeze.
                 </li>
                 <li>
-                  Robust RSVP and Guest Management: Seamlessly handle guest
-                  lists, VIP attendees, and check-ins like a pro.
+                  <i className="fa-solid fa-check ticks"></i>&nbsp; Robust RSVP
+                  and Guest Management: Seamlessly handle guest lists, VIP
+                  attendees, and check-ins like a pro.
                 </li>
                 <li>
-                  Premium Ticketing and Payment Options: Boost your ticket sales
-                  with advanced options like discounts and secure payment
-                  gateways.
+                  <i className="fa-solid fa-check ticks"></i>&nbsp; Premium
+                  Ticketing and Payment Options: Boost your ticket sales with
+                  advanced options like discounts and secure payment gateways.
                 </li>
                 <li>
-                  Fully Customizable Event Websites: Create stunning event
-                  websites that leave a lasting impression on your attendees.
+                  <i className="fa-solid fa-check ticks"></i>&nbsp; Fully
+                  Customizable Event Websites: Create stunning event websites
+                  that leave a lasting impression on your attendees.
                 </li>
                 <li>
-                  Priority Support: Enjoy priority access to our dedicated
-                  support team to ensure a smooth event planning experience.
+                  <i className="fa-solid fa-check ticks"></i>&nbsp; Priority
+                  Support: Enjoy priority access to our dedicated support team
+                  to ensure a smooth event planning experience.
                 </li>
               </ul>
             </div>
