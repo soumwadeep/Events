@@ -41,13 +41,13 @@ const page = () => {
             <div className="middle">
               <div className="inner">
                 <form>
-                  <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">
+                  <div className="mb-3">
+                    <label htmlFor="exampleInputEmail1" className="form-label">
                       Your Email ID
                     </label>
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       onChange={(e) => {
@@ -57,17 +57,17 @@ const page = () => {
                         });
                       }}
                     />
-                    <div id="emailHelp" class="form-text">
+                    <div id="emailHelp" className="form-text">
                       We'll Never Share Your Email With Anyone Else.
                     </div>
                   </div>
-                  <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">
+                  <div className="mb-3">
+                    <label htmlFor="exampleInputPassword1" className="form-label">
                       Your Password
                     </label>
                     <input
                       type="password"
-                      class="form-control"
+                      className="form-control"
                       id="exampleInputPassword1"
                       onChange={(e) => {
                         setUser({
@@ -79,7 +79,7 @@ const page = () => {
                   </div>
                   <button
                     type="submit"
-                    class="btn btn-primary mb-3"
+                    className="btn btn-primary mb-3"
                     onClick={loginUser}
                   >
                     Sign In

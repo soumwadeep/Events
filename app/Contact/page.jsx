@@ -31,41 +31,41 @@ const page = () => {
                     name="_next"
                     value="https://events.soumwadeepguha.com/ThankYou"
                   />
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">
+                  <div className="mb-3">
+                    <label htmlFor="exampleFormControlInput1" className="form-label">
                       Your Name
                     </label>
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       name="Name"
                       id="exampleFormControlInput1"
                     />
                   </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlInput1" class="form-label">
+                  <div className="mb-3">
+                    <label htmlFor="exampleFormControlInput1" className="form-label">
                       Your Email ID
                     </label>
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       name="Email ID"
                       id="exampleFormControlInput1"
                       placeholder="name@example.com"
                     />
                   </div>
-                  <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">
+                  <div className="mb-3">
+                    <label htmlFor="exampleFormControlTextarea1" className="form-label">
                       Your Message
                     </label>
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       name="Message"
                       id="exampleFormControlTextarea1"
                       rows="3"
                     ></textarea>
                   </div>
-                  <button type="submit" class="btn btn-success mb-4">
+                  <button type="submit" className="btn btn-success mb-4">
                     Send
                   </button>
                 </form>

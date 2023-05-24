@@ -57,7 +57,7 @@ const page = () => {
               <div className="inner">
                 <form className="row g-3" method="post">
                   <div className="col-md-6">
-                    <label for="inputName" className="form-label">
+                    <label htmlFor="inputName" className="form-label">
                       Name
                     </label>
                     <input
@@ -73,7 +73,7 @@ const page = () => {
                     />
                   </div>
                   <div className="col-md-6">
-                    <label for="inputPhone" className="form-label">
+                    <label htmlFor="inputPhone" className="form-label">
                       Mobile No.
                     </label>
                     <input
@@ -89,7 +89,7 @@ const page = () => {
                     />
                   </div>
                   <div className="col-md-6">
-                    <label for="inputEmail4" className="form-label">
+                    <label htmlFor="inputEmail4" className="form-label">
                       Email
                     </label>
                     <input
@@ -105,7 +105,7 @@ const page = () => {
                     />
                   </div>
                   <div className="col-md-6">
-                    <label for="inputPassword4" className="form-label">
+                    <label htmlFor="inputPassword4" className="form-label">
                       Password
                     </label>
                     <input
@@ -121,7 +121,7 @@ const page = () => {
                     />
                   </div>
                   <div className="col-12">
-                    <label for="inputAddress" className="form-label">
+                    <label htmlFor="inputAddress" className="form-label">
                       Address
                     </label>
                     <input
@@ -138,7 +138,7 @@ const page = () => {
                     />
                   </div>
                   <div className="col-md-6">
-                    <label for="inputCity" className="form-label">
+                    <label htmlFor="inputCity" className="form-label">
                       City
                     </label>
                     <input
@@ -154,7 +154,7 @@ const page = () => {
                     />
                   </div>
                   <div className="col-md-4">
-                    <label for="inputState" className="form-label">
+                    <label htmlFor="inputState" className="form-label">
                       State
                     </label>
                     <input
@@ -170,7 +170,7 @@ const page = () => {
                     />
                   </div>
                   <div className="col-md-2">
-                    <label for="inputZip" className="form-label">
+                    <label htmlFor="inputZip" className="form-label">
                       Zip
                     </label>
                     <input
