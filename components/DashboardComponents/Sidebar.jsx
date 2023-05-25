@@ -24,7 +24,6 @@ const Sidebar = () => {
   const handleLogout = async () => {
     try {
       await account.deleteSession("current");
-      window.location.replace("/");
     } catch (error) {
       alert(error);
       console.log(error);
@@ -46,7 +45,7 @@ const Sidebar = () => {
       <div
         className="offcanvas offcanvas-start"
         data-bs-scroll="true"
-        tabindex="-1"
+        tabIndex="-1"
         id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel"
       >
@@ -64,31 +63,37 @@ const Sidebar = () => {
         <div className="offcanvas-body">
           <Link
             className={`nav-link ${
-              pathname === "/Dashboard/CreateEvent" ? "active" : ""
+              pathname === "/Dashboard/CreatorDashboard/CreateEvent"
+                ? "active"
+                : ""
             }`}
-            href="/Dashboard/CreateEvent"
+            href="/Dashboard/CreatorDashboard/CreateEvent"
           >
             <h4>Create A Event</h4>
           </Link>
           <Link
             className={`nav-link ${
-              pathname === "/Dashboard/InviteAttendees" ? "active" : ""
+              pathname === "/Dashboard/CreatorDashboard/InviteAttendees"
+                ? "active"
+                : ""
             }`}
-            href="/Dashboard/InviteAttendees"
+            href="/Dashboard/CreatorDashboard/InviteAttendees"
           >
             <h4>Invite Attendees</h4>
           </Link>
           <Link
             className={`nav-link ${
-              pathname === "/Dashboard/ManageRsvp" ? "active" : ""
+              pathname === "/Dashboard/CreatorDashboard/ManageRsvp"
+                ? "active"
+                : ""
             }`}
-            href="/Dashboard/ManageRsvp"
+            href="/Dashboard/CreatorDashboard/ManageRsvp"
           >
             <h4>Manage RSVP</h4>
           </Link>
           <Link
             className={`nav-link ${pathname === "/" ? "active" : ""}`}
-            href="/"
+            href="#"
             onClick={handleLogout}
           >
             <h4>Sign Out</h4>
@@ -100,25 +105,31 @@ const Sidebar = () => {
       <nav className="mobile-navbar fixed-bottom">
         <Link
           className={`nav-link ${
-            pathname === "/Dashboard/CreateEvent" ? "active" : ""
+            pathname === "/Dashboard/CreatorDashboard/CreateEvent"
+              ? "active"
+              : ""
           }`}
-          href="/Dashboard/CreateEvent"
+          href="/Dashboard/CreatorDashboard/CreateEvent"
         >
           <i className="fa-regular fa-calendar-plus icons"></i>
         </Link>
         <Link
           className={`nav-link ${
-            pathname === "/Dashboard/InviteAttendees" ? "active" : ""
+            pathname === "/Dashboard/CreatorDashboard/InviteAttendees"
+              ? "active"
+              : ""
           }`}
-          href="/Dashboard/InviteAttendees"
+          href="/Dashboard/CreatorDashboard/InviteAttendees"
         >
           <i className="fa-solid fa-share-nodes icons"></i>
         </Link>
         <Link
           className={`nav-link ${
-            pathname === "/Dashboard/ManageRsvp" ? "active" : ""
+            pathname === "/Dashboard/CreatorDashboard/ManageRsvp"
+              ? "active"
+              : ""
           }`}
-          href="/Dashboard/ManageRsvp"
+          href="/Dashboard/CreatorDashboard/ManageRsvp"
         >
           <i className="fa-solid fa-file-circle-exclamation icons"></i>
         </Link>
