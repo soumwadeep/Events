@@ -197,3 +197,11 @@ li {
 .barsicon {
   font-size: 24px;
 }
+
+@media only screen and (max-width: 992px) {
+
+  .offcanvas,
+  .menubtn {
+    display: none !important;
+  }
+}

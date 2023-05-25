@@ -3,8 +3,34 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import logo from "@/img/logo.svg";
+import { useEffect, useState } from "react";
+import { account } from "@/components/AppwriteConfig";
 const Sidebar = () => {
   const pathname = usePathname();
+  const [userDetails, setUserDetails] = useState();
+  useEffect(() => {
+    const getData = account.get();
+    getData.then(
+      function (response) {
+        setUserDetails(response);
+      },
+      function (error) {
+        console.log(error);
+        alert(error);
+      }
+    );
+  }, []);
+
+  const handleLogout = async () => {
+    try {
+      await account.deleteSession("current");
+      window.location.replace("/");
+    } catch (error) {
+      alert(error);
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <button
@@ -60,8 +86,49 @@ const Sidebar = () => {
           >
             <h4>Manage RSVP</h4>
           </Link>
+          <Link
+            className={`nav-link ${pathname === "/" ? "active" : ""}`}
+            href="/"
+            onClick={handleLogout}
+          >
+            <h4>Sign Out</h4>
+          </Link>
         </div>
       </div>
+
+      {/* Mobile Navbar */}
+      <nav className="mobile-navbar fixed-bottom">
+        <Link
+          className={`nav-link ${
+            pathname === "/Dashboard/CreateEvent" ? "active" : ""
+          }`}
+          href="/Dashboard/CreateEvent"
+        >
+          <i className="fa-regular fa-calendar-plus icons"></i>
+        </Link>
+        <Link
+          className={`nav-link ${
+            pathname === "/Dashboard/InviteAttendees" ? "active" : ""
+          }`}
+          href="/Dashboard/InviteAttendees"
+        >
+          <i className="fa-solid fa-share-nodes icons"></i>
+        </Link>
+        <Link
+          className={`nav-link ${
+            pathname === "/Dashboard/ManageRsvp" ? "active" : ""
+          }`}
+          href="/Dashboard/ManageRsvp"
+        >
+          <i className="fa-solid fa-file-circle-exclamation icons"></i>
+        </Link>
+        <Link
+          className={`nav-link ${pathname === "/" ? "active" : ""}`}
+          href="/"
+        >
+          <i className="fa-solid fa-right-from-bracket icons"></i>
+        </Link>
+      </nav>
     </div>
   );
 };
