@@ -19,14 +19,13 @@ const page = () => {
                   <Image src={logo} alt="Logo" className="mob-logo" />
                   <h1>Sg Events</h1>
                 </div>
-                <h2 style={{ color: "#d905dc" }}>
-                  Unleash the Magic of Extraordinary Events
-                </h2>
+                <h2 style={{ color: "#d905dc" }}>Welcome To Sg Events</h2>
                 <h5>
-                  At SgEvents, we believe that every moment is an opportunity to
-                  create something extraordinary. We are passionate about
-                  turning your vision into a reality, crafting events that will
-                  leave a lasting impact on you and your guests.
+                  Plan and manage your events effortlessly with our intuitive
+                  event planning app. Whether you're organizing a corporate
+                  conference, a wedding, or a community fundraiser, our app
+                  provides you with all the tools you need to ensure a
+                  successful event from start to finish.
                 </h5>
               </div>
             </div>
@@ -45,15 +44,15 @@ const page = () => {
             <div className="middle">
               <div className="inner">
                 <h2 style={{ color: "#05d6d9" }}>
-                  Experience the Art of Celebration
+                  Experience the Easy To Use UI
                 </h2>
                 <h5>
-                  From lavish weddings to corporate soirées and everything in
-                  between, we specialize in crafting exceptional experiences
-                  that go beyond the ordinary. Our team of creative experts will
-                  work closely with you to understand your desires, infuse your
-                  personality, and transform your event into an immersive and
-                  unforgettable celebration.
+                  With our user-friendly interface, you can create event
+                  listings, provide event details, set event dates and
+                  locations, and even customize RSVP forms to gather important
+                  information from attendees. Keep track of your guest list,
+                  send out invitations, and manage RSVPs seamlessly, all in one
+                  central location.
                 </h5>
               </div>
             </div>
@@ -66,16 +65,14 @@ const page = () => {
             <div className="middle">
               <div className="inner">
                 <h2 style={{ color: "#d905dc" }}>
-                  Where Imagination Takes Center Stage
+                  Get The Power Of Collaboration
                 </h2>
                 <h5>
-                  At SgEvents, we dare to dream big. Our innovative approach and
-                  outside-the-box thinking ensure that your event will be a true
-                  reflection of your style and taste. From breathtaking venues
-                  and awe-inspiring decorations to mesmerizing entertainment and
-                  exquisite cuisine, we will weave together every element
-                  seamlessly, creating a symphony of enchantment that will
-                  captivate all who attend.
+                  Collaborate with your team or co-organizers by granting them
+                  access to event details and attendee information. Our app
+                  allows you to assign roles and permissions, ensuring smooth
+                  coordination and effective communication among event
+                  organizers.
                 </h5>
               </div>
             </div>
@@ -97,13 +94,11 @@ const page = () => {
                   Your Vision. Our Expertise.
                 </h2>
                 <h5>
-                  When you choose SgEvents, you gain a trusted partner dedicated
-                  to exceeding your expectations. With our meticulous attention
-                  to detail, impeccable organizational skills, and passion for
-                  perfection, we leave no stone unturned in delivering flawless
-                  execution. Sit back, relax, and let us take care of every
-                  aspect of your event, allowing you to be fully present and
-                  enjoy every magical moment.
+                  Leave the stress of event planning behind and let our app
+                  simplify the process for you. From event creation to attendee
+                  management, we've got you covered. Start planning your next
+                  event with confidence and make it an unforgettable experience
+                  for both you and your attendees.
                 </h5>
               </div>
             </div>

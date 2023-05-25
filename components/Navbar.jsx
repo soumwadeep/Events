@@ -81,44 +81,39 @@ const Navbar = () => {
           className={`nav-link ${pathname === "/" ? "active" : ""}`}
           href="/"
         >
-          <i className="fa-solid fa-house icons"></i><br/>
-          <h5>Home</h5>
+          <i className="fa-solid fa-house icons"></i>
+          
         </Link>
         <Link
           className={`nav-link ${pathname === "/Features" ? "active" : ""}`}
           href="/Features"
         >
-          <i className="fa-solid fa-bolt icons"></i><br/>
-          <h5>Features</h5>
+          <i className="fa-solid fa-bolt icons"></i>
         </Link>
         <Link
           className={`nav-link ${pathname === "/Pricing" ? "active" : ""}`}
           href="/Pricing"
         >
           <i className="fa-solid fa-dollar-sign icons"></i>
-          <br/>
-          <h5>Plans</h5>
+          
         </Link>
         <Link
           className={`nav-link ${pathname === "/Contact" ? "active" : ""}`}
           href="/Contact"
         >
-          <i className="fa-solid fa-headset icons"></i><br/>
-          <h5>Contact</h5>
+          <i className="fa-solid fa-headset icons"></i>
         </Link>
         <Link
           className={`nav-link ${pathname === "/SignUp" ? "active" : ""}`}
           href="/SignUp"
         >
-          <i className="fa-solid fa-user-plus icons"></i><br/>
-          <h5>Sign Up</h5>
+          <i className="fa-solid fa-user-plus icons"></i>
         </Link>
         <Link
           className={`nav-link ${pathname === "/SignIn" ? "active" : ""}`}
           href="/SignIn"
         >
-          <i className="fa-solid fa-sign-in icons"></i><br/>
-          <h5>Sign In</h5>
+          <i className="fa-solid fa-sign-in icons"></i>
         </Link>
       </nav>
     </div>

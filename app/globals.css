@@ -94,7 +94,7 @@ textarea {
     background-image: linear-gradient(315deg, #f907fc 0%, #05d6d9 74%);
     background-attachment: fixed;
     /* bottom: 10px !important; */
-    padding-top: 20px;
+    padding: 10px;
     border-radius: 20px;
     -webkit-box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
@@ -107,7 +107,7 @@ textarea {
 }
 
 .icons {
-  font-size: 30px !important;
+  font-size: 32px !important;
   display: flex !important;
   justify-content: space-around;
 }
@@ -147,7 +147,7 @@ textarea {
 /* Footer */
 .footer h5 {
   font-weight: 700 !important;
-  margin-bottom: 20vh !important;
+  margin-bottom: 10vh !important;
 }
 
 /* Vertically Align Centre */
