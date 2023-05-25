@@ -5,7 +5,7 @@ import { account } from "@/components/AppwriteConfig";
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
-import loginimg from "@/img/login.webp";
+import loginimg from "@/img/login.svg";
 const page = () => {
   const [user, setUser] = useState({
     email: "",

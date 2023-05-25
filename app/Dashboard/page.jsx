@@ -1,6 +1,6 @@
 import Sidebar from "@/components/DashboardComponents/Sidebar";
 import Image from "next/image";
-import instruc from "@/img/instruc.webp";
+import instruc from "@/img/instruc.svg";
 const page = () => {
   return (
     <div>

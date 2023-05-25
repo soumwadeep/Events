@@ -1,14 +1,14 @@
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import Image from "next/image";
-import seamless from "@/img/seamless.webp";
-import customize from "@/img/customize.webp";
-import rsvp from "@/img/rsvp.webp";
-import ticket from "@/img/ticket.webp";
-import guest from "@/img/guest.webp";
-import collab from "@/img/collab.webp";
-import analytics from "@/img/analytics.webp";
-import integration from "@/img/integration.webp";
+import seamless from "@/img/seamless.svg";
+import customize from "@/img/customize.svg";
+import rsvp from "@/img/rsvp.svg";
+import ticket from "@/img/ticket.svg";
+import guest from "@/img/guest.svg";
+import collab from "@/img/collab.svg";
+import analytics from "@/img/analytics.svg";
+import integration from "@/img/integration.svg";
 const page = () => {
   return (
     <div>

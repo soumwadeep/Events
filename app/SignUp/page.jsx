@@ -2,7 +2,7 @@
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import Image from "next/image";
-import signup from "@/img/signup.webp";
+import signup from "@/img/signup.svg";
 import { useState } from "react";
 import { account } from "@/components/AppwriteConfig";
 

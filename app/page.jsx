@@ -1,10 +1,10 @@
 import Image from "next/image";
-import event1 from "@/img/event1.webp";
-import event2 from "@/img/event2.webp";
-import event3 from "@/img/event3.webp";
-import event4 from "@/img/event4.webp";
-import event5 from "@/img/event5.webp";
-import logo from "@/img/logo.webp";
+import event1 from "@/img/event1.svg";
+import event2 from "@/img/event2.svg";
+import event3 from "@/img/event3.svg";
+import event4 from "@/img/event4.svg";
+import event5 from "@/img/event5.svg";
+import logo from "@/img/logo.svg";
 import Navbar from "@/components/Navbar";
 const page = () => {
   return (

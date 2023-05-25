@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import Image from "next/image";
-import contact from "@/img/contact.webp";
+import contact from "@/img/contact.svg";
 const page = () => {
   return (
     <div>

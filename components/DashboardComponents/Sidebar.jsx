@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import logo from "@/img/logo.webp";
+import logo from "@/img/logo.svg";
 const Sidebar = () => {
   const pathname = usePathname();
   return (
@@ -14,9 +14,7 @@ const Sidebar = () => {
         data-bs-target="#offcanvasWithBothOptions"
         aria-controls="offcanvasWithBothOptions"
       >
-        <h5>
-          <i className="fa-solid fa-bars barsicon"></i> Menu
-        </h5>
+        <i className="fa-solid fa-bars barsicon"></i>
       </button>
 
       <div

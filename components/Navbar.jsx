@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/img/logo.webp";
+import logo from "@/img/logo.svg";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {

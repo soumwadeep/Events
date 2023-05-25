@@ -1,8 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import Image from "next/image";
-import free from "@/img/free.webp";
-import premium from "@/img/premium.webp";
+import free from "@/img/free.svg";
+import premium from "@/img/premium.svg";
 const page = () => {
   return (
     <div>

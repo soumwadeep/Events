@@ -1,5 +1,5 @@
 import Image from "next/image";
-import thanks from "@/img/thanks.webp";
+import thanks from "@/img/thanks.svg";
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
 const page = () => {
