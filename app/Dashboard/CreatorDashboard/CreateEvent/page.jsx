@@ -2,7 +2,7 @@
 import Sidebar from "@/components/DashboardComponents/Sidebar";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { account, databases } from "@/components/AppwriteConfig";
 
 const page = () => {
@@ -122,6 +122,20 @@ const page = () => {
       });
   };
 
+  // Edit Section
+  const editorRef = useRef(null);
+
+  const handleEdit = (event) => {
+    const { title, description } = event;
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // Set Quill editor content
+    quillTitle.clipboard.dangerouslyPasteHTML(title);
+    quillDescription.clipboard.dangerouslyPasteHTML(description);
+  };
+
   const handleDelete = (eventId) => {
     // Perform delete operation here using Appwrite SDK
     const deleteDocument = databases.deleteDocument(
@@ -207,22 +221,31 @@ const page = () => {
           You Have Not Created Any Event.
         </div>
       ) : (
-        <ul className="mt-5">
-          {events.map((event) => (
-            <li key={event.$id}>
-              <div dangerouslySetInnerHTML={{ __html: event.title }}></div>
-              <div
-                dangerouslySetInnerHTML={{ __html: event.description }}
-              ></div>
-              <button
-                className="btn btn-danger"
-                onClick={() => handleDelete(event.$id)}
-              >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <h2 className="text-center mt-3">Your Created Events</h2>
+          <div>
+            {events.map((event) => (
+              <div key={event.$id} className="events">
+                <div dangerouslySetInnerHTML={{ __html: event.title }}></div>
+                <div
+                  dangerouslySetInnerHTML={{ __html: event.description }}
+                ></div>
+                <button
+                  className="btn btn-warning me-3"
+                  onClick={() => handleEdit(event)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleDelete(event.$id)}
+                >
+                  Delete
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
       )}
     </div>
   );
