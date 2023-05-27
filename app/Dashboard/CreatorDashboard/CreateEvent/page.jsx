@@ -8,6 +8,7 @@ import { account, databases } from "@/components/AppwriteConfig";
 const page = () => {
   const [quillTitle, setQuillTitle] = useState(null);
   const [quillDescription, setQuillDescription] = useState(null);
+  const [selectedEventId, setSelectedEventId] = useState("");
   const [loader, setLoader] = useState(false);
   const [events, setEvents] = useState([]);
   const [creatorId, setCreatorId] = useState("");
@@ -88,45 +89,65 @@ const page = () => {
   const handleSave = () => {
     const title = quillTitle.root.innerHTML;
     const description = quillDescription.root.innerHTML;
-    // Perform save operation here using Appwrite SDK
-    const docId = Date.now().toString();
+    const docId = selectedEventId || Date.now().toString();
     const data = {
       creatorId,
       title,
       description,
     };
-    const createDocument = databases.createDocument(
-      "646df0f09aabfb2b250c",
-      "64714c8a1def3f1d523b",
-      docId,
-      data
-    );
 
-    createDocument
-      .then(
-        (response) => {
+    if (selectedEventId) {
+      // Update existing event
+      const updateDocument = databases.updateDocument(
+        "646df0f09aabfb2b250c",
+        "64714c8a1def3f1d523b",
+        selectedEventId,
+        data
+      );
+
+      updateDocument
+        .then((response) => {
+          console.log(response);
+          alert("Event Updated Successfully");
+          // Refresh the event list
+          refreshEventList();
+        })
+        .catch((error) => {
+          console.error(error);
+          alert("Failed To Update Event");
+        });
+    } else {
+      // Create new event
+      const createDocument = databases.createDocument(
+        "646df0f09aabfb2b250c",
+        "64714c8a1def3f1d523b",
+        docId,
+        data
+      );
+
+      createDocument
+        .then((response) => {
           console.log(response);
           alert("Event Saved Successfully");
           // Refresh the event list
           refreshEventList();
-        },
-        (error) => {
+        })
+        .catch((error) => {
           console.error(error);
           alert("Failed To Save Event");
-        }
-      )
-      .finally(() => {
-        // Clear the Quill editors
-        quillTitle.setText("");
-        quillDescription.setText("");
-      });
+        });
+    }
+
+    // Clear the Quill editors
+    quillTitle.setText("");
+    quillDescription.setText("");
   };
 
   // Edit Section
   const editorRef = useRef(null);
 
   const handleEdit = (event) => {
-    const { title, description } = event;
+    const { title, description, $id } = event;
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -134,6 +155,9 @@ const page = () => {
     // Set Quill editor content
     quillTitle.clipboard.dangerouslyPasteHTML(title);
     quillDescription.clipboard.dangerouslyPasteHTML(description);
+
+    // Set the selected event ID
+    setSelectedEventId($id);
   };
 
   const handleDelete = (eventId) => {
@@ -156,7 +180,11 @@ const page = () => {
         alert("Failed To Delete Event");
       }
     );
+
+    // Reset the selected event ID
+    setSelectedEventId("");
   };
+
   const refreshEventList = () => {
     setLoader(true);
     account.get().then(
@@ -170,7 +198,7 @@ const page = () => {
             .then(
               (events) => {
                 const filteredEvents = events.documents.filter(
-                  (event) => event.userId === response.$id
+                  (event) => event.creatorId === response.$id
                 );
                 setEvents(filteredEvents);
               },
@@ -181,7 +209,6 @@ const page = () => {
             )
             .finally(() => {
               setLoader(false);
-              window.location.reload();
             });
         } else {
           console.log("You Are Not Logged In");
@@ -197,56 +224,60 @@ const page = () => {
   };
 
   return (
-    <div>
-      <Sidebar />
-      <h1>Welcome To Event Creator</h1>
-      <h4>
-        We Have Incorporated A Total MS Word-Like Environment For You To Make
-        Rich Looking Events
-      </h4>
-      <h2>Title:</h2>
-      <div id="title-editor"></div>
-      <br />
-      <h2>Description:</h2>
-      <div id="description-editor"></div>
-      <br />
-      <button onClick={handleSave} className="btn btn-success">
-        Save Event
-      </button>
-      <br />
-      {loader ? (
-        <div className="mt-3">Loading Your Events...</div>
-      ) : events.length === 0 ? (
-        <div className="mt-3" style={{ color: "red" }}>
-          You Have Not Created Any Event.
-        </div>
-      ) : (
-        <div>
-          <h2 className="text-center mt-3">Your Created Events</h2>
-          <div>
-            {events.map((event) => (
-              <div key={event.$id} className="events">
-                <div dangerouslySetInnerHTML={{ __html: event.title }}></div>
-                <div
-                  dangerouslySetInnerHTML={{ __html: event.description }}
-                ></div>
-                <button
-                  className="btn btn-warning me-3"
-                  onClick={() => handleEdit(event)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => handleDelete(event.$id)}
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
+    <div className="row">
+      <div className="col-sm-2">
+        <Sidebar />
+      </div>
+      <div className="col-sm">
+        <h1>Welcome To Event Creator</h1>
+        <h4>
+          We Have Incorporated A Total MS Word-Like Environment For You To Make
+          Rich Looking Events
+        </h4>
+        <h2>Title:</h2>
+        <div id="title-editor"></div>
+        <br />
+        <h2>Description:</h2>
+        <div id="description-editor"></div>
+        <br />
+        <button onClick={handleSave} className="btn btn-success">
+          {selectedEventId ? "Edit Event" : "Save Event"}
+        </button>
+        <br />
+        {loader ? (
+          <div className="mt-3">Loading Your Events...</div>
+        ) : events.length === 0 ? (
+          <div className="mt-3" style={{ color: "red" }}>
+            You Have Not Created Any Event.
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="events-box">
+            <h2 className="text-center mt-3">Your Created Events</h2>
+            <div className="created-events events-list">
+              {events.map((event) => (
+                <div key={event.$id} className="events">
+                  <div dangerouslySetInnerHTML={{ __html: event.title }}></div>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: event.description }}
+                  ></div>
+                  <button
+                    className="btn btn-warning me-3"
+                    onClick={() => handleEdit(event)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(event.$id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

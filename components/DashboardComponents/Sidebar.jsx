@@ -32,77 +32,47 @@ const Sidebar = () => {
 
   return (
     <div>
-      <button
-        className="btn btn-warning fixed-top menubtn"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasWithBothOptions"
-        aria-controls="offcanvasWithBothOptions"
-      >
-        <i className="fa-solid fa-bars barsicon"></i>
-      </button>
-
-      <div
-        className="offcanvas offcanvas-start"
-        data-bs-scroll="true"
-        tabIndex="-1"
-        id="offcanvasWithBothOptions"
-        aria-labelledby="offcanvasWithBothOptionsLabel"
-      >
-        <div className="offcanvas-header">
-          <h2 className="offcanvas-title" id="offcanvasWithBothOptionsLabel">
-            <Image src={logo} className="logo" alt="Logo" /> Sg Events
-          </h2>
-          <button
-            type="button"
-            className="btn-close"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div className="offcanvas-body">
-          <Link
-            className={`nav-link ${
-              pathname === "/Dashboard/CreatorDashboard/CreateEvent"
-                ? "active"
-                : ""
-            }`}
-            href="/Dashboard/CreatorDashboard/CreateEvent"
-          >
-            <h4>Create A Event</h4>
-          </Link>
-          <Link
-            className={`nav-link ${
-              pathname === "/Dashboard/CreatorDashboard/InviteAttendees"
-                ? "active"
-                : ""
-            }`}
-            href="/Dashboard/CreatorDashboard/InviteAttendees"
-          >
-            <h4>Invite Attendees</h4>
-          </Link>
-          <Link
-            className={`nav-link ${
-              pathname === "/Dashboard/CreatorDashboard/ManageRsvp"
-                ? "active"
-                : ""
-            }`}
-            href="/Dashboard/CreatorDashboard/ManageRsvp"
-          >
-            <h4>Manage RSVP</h4>
-          </Link>
-          <Link
-            className={`nav-link ${pathname === "/" ? "active" : ""}`}
-            href="#"
-            onClick={handleLogout}
-          >
-            <h4>Sign Out</h4>
-          </Link>
-        </div>
+      <div className="pc-sidebar">
+        <Link
+          className={`nav-link ${
+            pathname === "/Dashboard/CreatorDashboard/CreateEvent"
+              ? "active"
+              : ""
+          }`}
+          href="/Dashboard/CreatorDashboard/CreateEvent"
+        >
+          <h4>Create A Event</h4>
+        </Link>
+        <Link
+          className={`nav-link ${
+            pathname === "/Dashboard/CreatorDashboard/InviteAttendees"
+              ? "active"
+              : ""
+          }`}
+          href="/Dashboard/CreatorDashboard/InviteAttendees"
+        >
+          <h4>Invite Attendees</h4>
+        </Link>
+        <Link
+          className={`nav-link ${
+            pathname === "/Dashboard/CreatorDashboard/ManageRsvp"
+              ? "active"
+              : ""
+          }`}
+          href="/Dashboard/CreatorDashboard/ManageRsvp"
+        >
+          <h4>Manage RSVP</h4>
+        </Link>
+        <Link
+          className={`nav-link ${pathname === "/" ? "active" : ""}`}
+          href="#"
+          onClick={handleLogout}
+        >
+          <h4>Sign Out</h4>
+        </Link>
       </div>
-
       {/* Mobile Navbar */}
-      <nav className="mobile-navbar fixed-bottom">
+      <div className="mobile-navbar fixed-bottom">
         <Link
           className={`nav-link ${
             pathname === "/Dashboard/CreatorDashboard/CreateEvent"
@@ -139,7 +109,7 @@ const Sidebar = () => {
         >
           <i className="fa-solid fa-right-from-bracket icons"></i>
         </Link>
-      </nav>
+      </div>
     </div>
   );
 };
