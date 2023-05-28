@@ -49,22 +49,26 @@ const page = () => {
         <div className="col-sm">
           <h1>Invite Attendees For Events</h1>
           <h3>Upcoming Events:</h3>
-          <div className="created-events events-list">
-            {events.map((event) => (
-              <div key={event.$id} className="events">
-                <div dangerouslySetInnerHTML={{ __html: event.title }}></div>
-                <div
-                  dangerouslySetInnerHTML={{ __html: event.description }}
-                ></div>
-                <button
-                  className="btn btn-success me-3"
-                  // onClick={() => handleEdit(event)}
-                >
-                  Invite
-                </button>
-              </div>
-            ))}
-          </div>
+          {loader ? ( // Display loader while fetching events
+            <h5 style={{ color: "red" }}>Loading All Events...</h5>
+          ) : (
+            <div className="created-events events-list">
+              {events.map((event) => (
+                <div key={event.$id} className="events">
+                  <div dangerouslySetInnerHTML={{ __html: event.title }}></div>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: event.description }}
+                  ></div>
+                  <button
+                    className="btn btn-success me-3"
+                    // onClick={() => handleEdit(event)}
+                  >
+                    Invite
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
