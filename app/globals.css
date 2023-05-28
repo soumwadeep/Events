@@ -240,3 +240,12 @@ li {
   background-color: whitesmoke !important;
   border-radius: 10px !important;
 }
+
+/* Dynamic Page */
+.fetchimg img {
+  width: 100%;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 4px 15px 4px rgba(0, 0, 0, 0.75);
+}

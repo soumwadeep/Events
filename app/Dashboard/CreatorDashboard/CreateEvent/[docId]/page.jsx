@@ -1,5 +1,4 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import "quill/dist/quill.snow.css";
@@ -8,9 +7,8 @@ import { databases } from "@/components/AppwriteConfig";
 
 const QuillNoSSRWrapper = dynamic(import("quill"), { ssr: false });
 
-const page = () => {
-  const router = useRouter();
-  const { docId } = router.query;
+const page = ({ params }) => {
+  const docId = params.docId;
   const [event, setEvent] = useState(null);
 
   useEffect(() => {
@@ -21,10 +19,9 @@ const page = () => {
           "64714c8a1def3f1d523b",
           docId
         );
-        console.log(response);
         setEvent(response);
       } catch (error) {
-        console.error(error);
+        console.error("Error", error);
       }
     };
 
@@ -34,17 +31,18 @@ const page = () => {
   }, [docId]);
 
   if (!docId || !event) {
-    return <div>Loading...</div>;
+    return <h4 style={{ color: "red" }}>Loading...</h4>;
   }
 
   return (
-    <div className="row">
+    <div className="row fetchimg">
       <div className="col-sm-2">
         <Sidebar />
       </div>
       <div className="col-sm">
-        <h1>{event.title}</h1>
-        <h2>Description:</h2>
+        {/* <h4>Title:</h4> */}
+        <div dangerouslySetInnerHTML={{ __html: event.title }}></div>
+        {/* <h4>Description:</h4> */}
         <div dangerouslySetInnerHTML={{ __html: event.description }}></div>
       </div>
     </div>
