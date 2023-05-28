@@ -45,7 +45,7 @@ const Page = () => {
   }, []);
 
   const handleInvite = (eventId) => {
-    const eventPageUrl = `/events/${eventId}`;
+    const eventPageUrl = `/Dashboard/CreatorDashboard/CreateEvent/${eventId}`;
     router.push(eventPageUrl);
   };
 
