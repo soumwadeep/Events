@@ -251,15 +251,17 @@ const page = () => {
             <h2 className="text-center mt-3">Your Created Events</h2>
             <div className="created-events events-list">
               {events.map((event) => (
-                <div
-                  key={event.$id}
-                  className="events"
-                  onClick={() => handleEventClick(event.$id)}
-                >
+                <div key={event.$id} className="events">
                   <div dangerouslySetInnerHTML={{ __html: event.title }}></div>
                   <div
                     dangerouslySetInnerHTML={{ __html: event.description }}
                   ></div>
+                  <button
+                    className="btn btn-success me-3"
+                    onClick={() => handleEventClick(event.$id)}
+                  >
+                    View
+                  </button>
                   <button
                     className="btn btn-warning me-3"
                     onClick={(e) => {

@@ -4,7 +4,7 @@ import Sidebar from "@/components/DashboardComponents/Sidebar";
 import { account, databases } from "@/components/AppwriteConfig";
 import { useRouter } from "next/navigation";
 
-const Page = () => {
+const page = () => {
   const [events, setEvents] = useState([]);
   const [loader, setLoader] = useState(false);
   const router = useRouter();
@@ -45,8 +45,16 @@ const Page = () => {
   }, []);
 
   const handleInvite = (eventId) => {
-    const eventPageUrl = `/Dashboard/CreatorDashboard/CreateEvent/${eventId}`;
-    router.push(eventPageUrl);
+    const eventPageUrl = `http://localhost:3000/Dashboard/CreatorDashboard/CreateEvent/${eventId}`;
+    navigator.clipboard
+      .writeText(eventPageUrl)
+      .then(() => {
+        alert("Event page URL copied to clipboard");
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Failed to copy event page URL");
+      });
   };
 
   return (
@@ -84,4 +92,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default page;
