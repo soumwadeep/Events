@@ -2,9 +2,13 @@
 import { useState, useEffect } from "react";
 import Sidebar from "@/components/DashboardComponents/Sidebar";
 import { account, databases } from "@/components/AppwriteConfig";
-const page = () => {
+import { useRouter } from "next/navigation";
+
+const Page = () => {
   const [events, setEvents] = useState([]);
   const [loader, setLoader] = useState(false);
+  const router = useRouter();
+
   useEffect(() => {
     setLoader(true);
     account.get().then(
@@ -39,7 +43,12 @@ const page = () => {
       }
     );
   }, []);
-  // Declare Invite Function
+
+  const handleInvite = (eventId) => {
+    const eventPageUrl = `/events/${eventId}`;
+    router.push(eventPageUrl);
+  };
+
   return (
     <div>
       <div className="row">
@@ -49,7 +58,7 @@ const page = () => {
         <div className="col-sm">
           <h1>Invite Attendees For Events</h1>
           <h3>Upcoming Events:</h3>
-          {loader ? ( // Display loader while fetching events
+          {loader ? (
             <h5 style={{ color: "red" }}>Loading All Events...</h5>
           ) : (
             <div className="created-events events-list">
@@ -61,7 +70,7 @@ const page = () => {
                   ></div>
                   <button
                     className="btn btn-success me-3"
-                    // onClick={() => handleEdit(event)}
+                    onClick={() => handleInvite(event.$id)}
                   >
                     Invite
                   </button>
@@ -75,4 +84,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

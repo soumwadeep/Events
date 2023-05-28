@@ -1,14 +1,16 @@
 "use client";
-import Sidebar from "@/components/DashboardComponents/Sidebar";
+import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
-import { useState, useEffect, useRef } from "react";
+import Sidebar from "@/components/DashboardComponents/Sidebar";
 import { account, databases } from "@/components/AppwriteConfig";
 
 const QuillNoSSRWrapper = dynamic(import("quill"), { ssr: false });
 
 const page = () => {
+  const router = useRouter();
   const [quillTitle, setQuillTitle] = useState(null);
   const [quillDescription, setQuillDescription] = useState(null);
   const [selectedEventId, setSelectedEventId] = useState("");
@@ -70,20 +72,20 @@ const page = () => {
               },
               (error) => {
                 console.error(error);
-                alert("Failed to fetch events");
+                alert("Failed To Fetch Events");
               }
             )
             .finally(() => {
               setLoader(false);
             });
         } else {
-          console.log("User is not logged in");
+          console.log("User Is Not Logged In");
           setLoader(false);
         }
       },
       (error) => {
         console.error(error);
-        alert("Failed to fetch user");
+        alert("Failed To Fetch User");
         setLoader(false);
       }
     );
@@ -134,6 +136,8 @@ const page = () => {
           alert("Event Saved Successfully");
           // Refresh the event list
           refreshEventList();
+          // Navigate to the newly generated event page
+          router.push(`/Dashboard/CreatorDashboard/CreateEvent/${docId}`);
         })
         .catch((error) => {
           console.error(error);
@@ -145,9 +149,6 @@ const page = () => {
     quillTitle.setText("");
     quillDescription.setText("");
   };
-
-  // Edit Section
-  const editorRef = useRef(null);
 
   const handleEdit = (event) => {
     const { title, description, $id } = event;
@@ -213,6 +214,11 @@ const page = () => {
     }
   };
 
+  const handleEventClick = (docId) => {
+    console.log("Event Click", docId);
+    router.push(`/Dashboard/CreatorDashboard/CreateEvent/${docId}`);
+  };
+
   return (
     <div className="row">
       <div className="col-sm-2">
@@ -245,20 +251,30 @@ const page = () => {
             <h2 className="text-center mt-3">Your Created Events</h2>
             <div className="created-events events-list">
               {events.map((event) => (
-                <div key={event.$id} className="events">
+                <div
+                  key={event.$id}
+                  className="events"
+                  onClick={() => handleEventClick(event.$id)}
+                >
                   <div dangerouslySetInnerHTML={{ __html: event.title }}></div>
                   <div
                     dangerouslySetInnerHTML={{ __html: event.description }}
                   ></div>
                   <button
                     className="btn btn-warning me-3"
-                    onClick={() => handleEdit(event)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEdit(event);
+                    }}
                   >
                     Edit
                   </button>
                   <button
                     className="btn btn-danger"
-                    onClick={() => handleDelete(event.$id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDelete(event.$id);
+                    }}
                   >
                     Delete
                   </button>
