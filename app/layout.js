@@ -1,7 +1,7 @@
 import "./globals.css";
 import Footer from "@/components/Footer";
 export const metadata = {
-  title: "Soumwadeep's Event Planner",
+  title: "Your's Event Planner",
   description: "World's Most Simplest And Fastest Event Planner Ever Created!",
 };
 
