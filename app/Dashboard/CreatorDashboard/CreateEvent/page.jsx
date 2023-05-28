@@ -1,9 +1,12 @@
 "use client";
 import Sidebar from "@/components/DashboardComponents/Sidebar";
+import dynamic from "next/dynamic";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import { useState, useEffect, useRef } from "react";
 import { account, databases } from "@/components/AppwriteConfig";
+
+const QuillNoSSRWrapper = dynamic(import("quill"), { ssr: false });
 
 const page = () => {
   const [quillTitle, setQuillTitle] = useState(null);
@@ -160,67 +163,54 @@ const page = () => {
     setSelectedEventId($id);
   };
 
-  const handleDelete = (eventId) => {
-    // Perform delete operation here using Appwrite SDK
-    const deleteDocument = databases.deleteDocument(
-      "646df0f09aabfb2b250c",
-      "64714c8a1def3f1d523b",
-      eventId
-    );
+  const handleDelete = async (eventId) => {
+    try {
+      // Perform delete operation here using Appwrite SDK
+      await databases.deleteDocument(
+        "646df0f09aabfb2b250c",
+        "64714c8a1def3f1d523b",
+        eventId
+      );
 
-    deleteDocument.then(
-      (response) => {
-        console.log(response);
-        alert("Event Deleted Successfully");
-        // Refresh the event list
-        refreshEventList();
-      },
-      (error) => {
-        console.error(error);
-        alert("Failed To Delete Event");
-      }
-    );
+      alert("Event Deleted Successfully");
+
+      // Refresh the event list
+      refreshEventList();
+    } catch (error) {
+      console.error(error);
+      alert("Failed To Delete Event");
+    }
 
     // Reset the selected event ID
     setSelectedEventId("");
   };
 
-  const refreshEventList = () => {
+  const refreshEventList = async () => {
     setLoader(true);
-    account.get().then(
-      (response) => {
-        if (response.$id) {
-          const getEvents = databases.listDocuments(
-            "646df0f09aabfb2b250c",
-            "64714c8a1def3f1d523b"
-          );
-          getEvents
-            .then(
-              (events) => {
-                const filteredEvents = events.documents.filter(
-                  (event) => event.creatorId === response.$id
-                );
-                setEvents(filteredEvents);
-              },
-              (error) => {
-                console.error(error);
-                alert("Failed To Fetch Events");
-              }
-            )
-            .finally(() => {
-              setLoader(false);
-            });
-        } else {
-          console.log("You Are Not Logged In");
-          setLoader(false);
-        }
-      },
-      (error) => {
-        console.error(error);
-        alert("Failed To Fetch User");
-        setLoader(false);
+
+    try {
+      const response = await account.get();
+
+      if (response.$id) {
+        const events = await databases.listDocuments(
+          "646df0f09aabfb2b250c",
+          "64714c8a1def3f1d523b"
+        );
+
+        const filteredEvents = events.documents.filter(
+          (event) => event.creatorId === response.$id
+        );
+
+        setEvents(filteredEvents);
+      } else {
+        console.log("You Are Not Logged In");
       }
-    );
+    } catch (error) {
+      console.error(error);
+      alert("Failed To Fetch Events");
+    } finally {
+      setLoader(false);
+    }
   };
 
   return (
