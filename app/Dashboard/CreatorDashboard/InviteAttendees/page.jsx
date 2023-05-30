@@ -45,7 +45,7 @@ const page = () => {
   }, []);
 
   const handleInvite = (eventId) => {
-    const eventPageUrl = `http://localhost:3000/Dashboard/CreatorDashboard/CreateEvent/${eventId}`;
+    const eventPageUrl = `https://events.soumwadeepguha.com/Dashboard/CreatorDashboard/CreateEvent/${eventId}`;
     navigator.clipboard
       .writeText(eventPageUrl)
       .then(() => {
