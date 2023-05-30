@@ -1,14 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import { useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
+import Quill from "quill";
 import "quill/dist/quill.snow.css";
 import Sidebar from "@/components/DashboardComponents/Sidebar";
 import { account, databases } from "@/components/AppwriteConfig";
-
-const QuillNoSSRWrapper = dynamic(() => import("react-quill"), {
-  ssr: false,
-});
 
 const page = () => {
   const router = useRouter();
@@ -35,24 +31,22 @@ const page = () => {
   ];
 
   useEffect(() => {
-    import("quill").then((Quill) => {
-      const titleEditorContainer = document.getElementById("title-editor");
-      const descriptionEditorContainer =
-        document.getElementById("description-editor");
-      // Title
-      const titleEditor = new Quill.default(titleEditorContainer, {
-        theme: "snow",
-        modules: { toolbar: toolbarOptions },
-      });
-      setQuillTitle(titleEditor);
-
-      // Description
-      const descriptionEditor = new Quill.default(descriptionEditorContainer, {
-        theme: "snow",
-        modules: { toolbar: toolbarOptions },
-      });
-      setQuillDescription(descriptionEditor);
+    const titleEditor = new Quill("#title-editor", {
+      theme: "snow",
+      modules: { toolbar: toolbarOptions },
     });
+    setQuillTitle(titleEditor);
+
+    const descriptionEditor = new Quill("#description-editor", {
+      theme: "snow",
+      modules: { toolbar: toolbarOptions },
+    });
+    setQuillDescription(descriptionEditor);
+
+    return () => {
+      setQuillTitle(null);
+      setQuillDescription(null);
+    };
   }, []);
 
   useEffect(() => {
@@ -119,7 +113,6 @@ const page = () => {
           alert("Event Updated Successfully");
           // Refresh the event list
           refreshEventList();
-          window.location.reload();
         })
         .catch((error) => {
           console.error(error);

@@ -49,11 +49,11 @@ const page = () => {
     navigator.clipboard
       .writeText(eventPageUrl)
       .then(() => {
-        alert("Event page URL copied to clipboard");
+        alert("Event Page URL Copied To Clipboard");
       })
       .catch((error) => {
         console.error(error);
-        alert("Failed to copy event page URL");
+        alert("Failed To Copy Event Page URL");
       });
   };
 

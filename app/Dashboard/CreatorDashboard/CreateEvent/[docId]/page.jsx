@@ -5,8 +5,6 @@ import "quill/dist/quill.snow.css";
 import Sidebar from "@/components/DashboardComponents/Sidebar";
 import { databases } from "@/components/AppwriteConfig";
 
-const QuillNoSSRWrapper = dynamic(import("quill"), { ssr: false });
-
 const page = ({ params }) => {
   const docId = params.docId;
   const [event, setEvent] = useState(null);
