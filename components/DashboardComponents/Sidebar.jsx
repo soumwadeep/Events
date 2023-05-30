@@ -1,8 +1,6 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
-import logo from "@/img/logo.svg";
 import { useEffect, useState } from "react";
 import { account } from "@/components/AppwriteConfig";
 const Sidebar = () => {
@@ -16,7 +14,9 @@ const Sidebar = () => {
       },
       function (error) {
         console.log(error);
-        alert(error);
+        // alert(error);
+        alert("You Are Not Logged In!Please Log In To Use Our Product...");
+        window.location.replace("/SignIn");
       }
     );
   }, []);

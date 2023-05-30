@@ -75,7 +75,6 @@ const page = () => {
               },
               (error) => {
                 console.error(error);
-                alert("Failed To Fetch Events");
               }
             )
             .finally(() => {

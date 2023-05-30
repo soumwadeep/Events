@@ -1,7 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
-import "quill/dist/quill.snow.css";
 import Sidebar from "@/components/DashboardComponents/Sidebar";
 import { databases } from "@/components/AppwriteConfig";
 
@@ -20,6 +18,8 @@ const page = ({ params }) => {
         setEvent(response);
       } catch (error) {
         console.error("Error", error);
+        alert("You Are Not Logged In!Please Log In To See All Events...");
+        window.location.replace("/SignIn");
       }
     };
 
