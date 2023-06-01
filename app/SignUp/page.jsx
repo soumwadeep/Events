@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import signup from "@/img/signup.svg";
 import { useState } from "react";
-import { account } from "@/components/AppwriteConfig";
+import { account, databases } from "@/components/AppwriteConfig";
 
 const page = () => {
   const [user, setUser] = useState({
@@ -13,6 +13,7 @@ const page = () => {
     email: "",
     password: "",
     address: "",
+    role: "",
     city: "",
     state: "",
     zip: "",
@@ -21,28 +22,56 @@ const page = () => {
   //Register
   const registerUser = async (e) => {
     e.preventDefault();
-    const userId = user.phone;
-    const promise = account.create(
-      userId,
-      user.email,
-      user.password,
-      user.name
-    );
-    promise.then(
-      function (response) {
-        console.log(response);
-        alert(
-          "Welcome To SgEvents!You Are Now Registered!Please Sign In To Our Platform To Continue..."
-        );
-        window.location.replace("/SignIn");
-      },
-      function (error) {
-        console.log(error);
-        alert(error);
+    for (const key in user) {
+      if (user[key] === "") {
+        alert("Please Fill In All Fields!");
+        return;
       }
-    );
+    }
+    const userId = user.phone;
+    try {
+      const response = await account.create(
+        userId,
+        user.email,
+        user.password,
+        user.name
+      );
+      alert(
+        "Welcome To SgEvents! You Are Now Registered! Please Sign In To Our Platform To Continue..."
+      );
+      const docId = Date.now().toString();
+      const documentData = {
+        name: user.name,
+        phone: user.phone,
+        email: user.email,
+        password: user.password,
+        address: user.address,
+        role: user.role,
+        city: user.city,
+        state: user.state,
+        zip: user.zip,
+      };
+      const promise = databases.createDocument(
+        "646df0f09aabfb2b250c",
+        "646df0f8b0a70785de1f",
+        docId,
+        documentData
+      );
+      console.log("Data", documentData);
+      promise.then(
+        function (response) {
+          console.log(response); // Success
+          window.location.replace("/SignIn");
+        },
+        function (error) {
+          console.log(error); // Failure
+        }
+      );
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
   };
-
   return (
     <div>
       <Head>
@@ -70,6 +99,7 @@ const page = () => {
                           name: e.target.value,
                         });
                       }}
+                      required
                     />
                   </div>
                   <div className="col-md-6">
@@ -86,6 +116,7 @@ const page = () => {
                           phone: e.target.value,
                         });
                       }}
+                      required
                     />
                   </div>
                   <div className="col-md-6">
@@ -102,6 +133,7 @@ const page = () => {
                           email: e.target.value,
                         });
                       }}
+                      required
                     />
                   </div>
                   <div className="col-md-6">
@@ -118,9 +150,10 @@ const page = () => {
                           password: e.target.value,
                         });
                       }}
+                      required
                     />
                   </div>
-                  <div className="col-12">
+                  <div className="col-6">
                     <label htmlFor="inputAddress" className="form-label">
                       Address
                     </label>
@@ -135,7 +168,45 @@ const page = () => {
                           address: e.target.value,
                         });
                       }}
+                      required
                     />
+                  </div>
+                  <div className="col-6">
+                    <label htmlFor="inputRole" className="form-label">
+                      Role
+                    </label>
+                    <select
+                      type="text"
+                      className="form-control"
+                      id="inputRole"
+                      onChange={(e) => {
+                        setUser({
+                          ...user,
+                          role: e.target.value,
+                        });
+                      }}
+                    >
+                      <option
+                        onSelect={(e) => {
+                          setUser({
+                            ...user,
+                            role: "User",
+                          });
+                        }}
+                      >
+                        User
+                      </option>
+                      <option
+                        onSelect={(e) => {
+                          setUser({
+                            ...user,
+                            role: "Creator",
+                          });
+                        }}
+                      >
+                        Creator
+                      </option>
+                    </select>
                   </div>
                   <div className="col-md-6">
                     <label htmlFor="inputCity" className="form-label">
@@ -151,6 +222,7 @@ const page = () => {
                           city: e.target.value,
                         });
                       }}
+                      required
                     />
                   </div>
                   <div className="col-md-4">
@@ -167,6 +239,7 @@ const page = () => {
                           state: e.target.value,
                         });
                       }}
+                      required
                     />
                   </div>
                   <div className="col-md-2">
@@ -183,6 +256,7 @@ const page = () => {
                           zip: e.target.value,
                         });
                       }}
+                      required
                     />
                   </div>
                   <div className="col-12"></div>
