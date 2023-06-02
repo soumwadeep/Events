@@ -31,7 +31,6 @@ const page = () => {
             );
             if (user) {
               const role = user.role;
-
               // Verify role and redirect accordingly
               if (role === "Creator") {
                 window.location.replace("/Dashboard/CreatorDashboard");

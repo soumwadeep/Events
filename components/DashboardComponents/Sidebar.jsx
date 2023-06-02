@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { account } from "@/components/AppwriteConfig";
+import { account, databases } from "@/components/AppwriteConfig";
 const Sidebar = () => {
   const pathname = usePathname();
   const [userDetails, setUserDetails] = useState();
@@ -11,11 +11,40 @@ const Sidebar = () => {
     getData.then(
       function (response) {
         setUserDetails(response);
+
+        const dataPromise = databases.listDocuments(
+          "646df0f09aabfb2b250c",
+          "646df0f8b0a70785de1f"
+        );
+        dataPromise.then(
+          function (r) {
+            const loggedInEmail = response.email;
+            const user = r.documents.find((doc) => doc.email === loggedInEmail);
+            if (user) {
+              const role = user.role;
+
+              // Verify role and redirect accordingly
+              if (role !== "Creator") {
+                alert(
+                  "You do not have permission to access this page. Please log in as a Creator."
+                );
+                window.location.replace("/SignIn");
+              }
+            } else {
+              console.log("User not found");
+              window.location.replace("/SignIn");
+            }
+          },
+          function (error) {
+            console.log(error);
+            alert("Error retrieving user details.");
+            window.location.replace("/SignIn");
+          }
+        );
       },
       function (error) {
         console.log(error);
-        // alert(error);
-        alert("You Are Not Logged In!Please Log In To Use Our Product...");
+        alert("You Are Not Logged In! Please Log In To Use Our Product...");
         window.location.replace("/SignIn");
       }
     );
