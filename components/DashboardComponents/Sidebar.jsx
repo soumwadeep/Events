@@ -6,48 +6,43 @@ import { account, databases } from "@/components/AppwriteConfig";
 const Sidebar = () => {
   const pathname = usePathname();
   const [userDetails, setUserDetails] = useState();
+
   useEffect(() => {
-    const getData = account.get();
-    getData.then(
-      function (response) {
+    const fetchData = async () => {
+      try {
+        const response = await account.get();
         setUserDetails(response);
 
         const dataPromise = databases.listDocuments(
           "646df0f09aabfb2b250c",
           "646df0f8b0a70785de1f"
         );
-        dataPromise.then(
-          function (r) {
-            const loggedInEmail = response.email;
-            const user = r.documents.find((doc) => doc.email === loggedInEmail);
-            if (user) {
-              const role = user.role;
+        const dataResponse = await dataPromise;
 
-              // Verify role and redirect accordingly
-              if (role !== "Creator") {
-                alert(
-                  "You do not have permission to access this page. Please log in as a Creator."
-                );
-                window.location.replace("/SignIn");
-              }
-            } else {
-              console.log("User not found");
-              window.location.replace("/SignIn");
-            }
-          },
-          function (error) {
-            console.log(error);
-            alert("Error retrieving user details.");
-            window.location.replace("/SignIn");
-          }
+        const loggedInEmail = response.email;
+        const user = dataResponse.documents.find(
+          (doc) => doc.email === loggedInEmail
         );
-      },
-      function (error) {
+        if (user) {
+          const role = user.role;
+          if (role !== "Creator") {
+            alert(
+              "You do not have permission to access this page. Please log in as a Creator."
+            );
+            window.location.href = "/SignIn";
+          }
+        } else {
+          console.log("User not found");
+          window.location.href = "/SignIn";
+        }
+      } catch (error) {
         console.log(error);
-        alert("You Are Not Logged In! Please Log In To Use Our Product...");
-        window.location.replace("/SignIn");
+        alert("Error retrieving user details.");
+        window.location.href = "/SignIn";
       }
-    );
+    };
+
+    fetchData();
   }, []);
 
   const handleLogout = async () => {

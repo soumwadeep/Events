@@ -13,21 +13,24 @@ const page = () => {
     email: "",
     password: "",
     address: "",
-    role: "",
+    role: "User",
     city: "",
     state: "",
     zip: "",
   });
 
-  //Register
+  // Register
   const registerUser = async (e) => {
     e.preventDefault();
+
+    // Check if all fields are filled
     for (const key in user) {
       if (user[key] === "") {
         alert("Please Fill In All Fields!");
         return;
       }
     }
+
     const userId = user.phone;
     try {
       const response = await account.create(
@@ -36,9 +39,11 @@ const page = () => {
         user.password,
         user.name
       );
+
       alert(
         "Welcome To SgEvents! You Are Now Registered! Please Sign In To Our Platform To Continue..."
       );
+
       const docId = Date.now().toString();
       const documentData = {
         name: user.name,
@@ -46,18 +51,21 @@ const page = () => {
         email: user.email,
         password: user.password,
         address: user.address,
-        role: user.role,
+        role: user.role, // Set the role here
         city: user.city,
         state: user.state,
         zip: user.zip,
       };
+
       const promise = databases.createDocument(
         "646df0f09aabfb2b250c",
         "646df0f8b0a70785de1f",
         docId,
         documentData
       );
+
       console.log("Data", documentData);
+
       promise.then(
         function (response) {
           console.log(response); // Success
@@ -72,6 +80,7 @@ const page = () => {
       alert(error);
     }
   };
+
   return (
     <div>
       <Head>
@@ -99,7 +108,6 @@ const page = () => {
                           name: e.target.value,
                         });
                       }}
-                      required
                     />
                   </div>
                   <div className="col-md-6">
@@ -116,7 +124,6 @@ const page = () => {
                           phone: e.target.value,
                         });
                       }}
-                      required
                     />
                   </div>
                   <div className="col-md-6">
@@ -133,7 +140,6 @@ const page = () => {
                           email: e.target.value,
                         });
                       }}
-                      required
                     />
                   </div>
                   <div className="col-md-6">
@@ -150,7 +156,6 @@ const page = () => {
                           password: e.target.value,
                         });
                       }}
-                      required
                     />
                   </div>
                   <div className="col-6">
@@ -168,7 +173,6 @@ const page = () => {
                           address: e.target.value,
                         });
                       }}
-                      required
                     />
                   </div>
                   <div className="col-6">
@@ -176,7 +180,6 @@ const page = () => {
                       Role
                     </label>
                     <select
-                      type="text"
                       className="form-control"
                       id="inputRole"
                       onChange={(e) => {
@@ -185,27 +188,10 @@ const page = () => {
                           role: e.target.value,
                         });
                       }}
+                      value={user.role}
                     >
-                      <option
-                        onSelect={(e) => {
-                          setUser({
-                            ...user,
-                            role: "User",
-                          });
-                        }}
-                      >
-                        User
-                      </option>
-                      <option
-                        onSelect={(e) => {
-                          setUser({
-                            ...user,
-                            role: "Creator",
-                          });
-                        }}
-                      >
-                        Creator
-                      </option>
+                      <option value="User">User</option>
+                      <option value="Creator">Creator</option>
                     </select>
                   </div>
                   <div className="col-md-6">
@@ -222,7 +208,6 @@ const page = () => {
                           city: e.target.value,
                         });
                       }}
-                      required
                     />
                   </div>
                   <div className="col-md-4">
@@ -239,7 +224,6 @@ const page = () => {
                           state: e.target.value,
                         });
                       }}
-                      required
                     />
                   </div>
                   <div className="col-md-2">
@@ -256,7 +240,6 @@ const page = () => {
                           zip: e.target.value,
                         });
                       }}
-                      required
                     />
                   </div>
                   <div className="col-12"></div>
