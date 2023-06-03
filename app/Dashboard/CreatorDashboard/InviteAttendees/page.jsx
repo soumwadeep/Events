@@ -57,6 +57,11 @@ const page = () => {
       });
   };
 
+  const handleView = (eventId) => {
+    const eventPageUrl = `https://events.soumwadeepguha.com/Dashboard/CreatorDashboard/CreateEvent/${eventId}`;
+    window.location.replace(eventPageUrl);
+  };
+
   return (
     <div>
       <div className="row">
@@ -73,9 +78,15 @@ const page = () => {
               {events.map((event) => (
                 <div key={event.$id} className="events">
                   <div dangerouslySetInnerHTML={{ __html: event.title }}></div>
-                  <div
+                  {/* <div
                     dangerouslySetInnerHTML={{ __html: event.description }}
-                  ></div>
+                  ></div> */}
+                  <button
+                    className="btn btn-warning me-3"
+                    onClick={() => handleView(event.$id)}
+                  >
+                    View
+                  </button>
                   <button
                     className="btn btn-success me-3"
                     onClick={() => handleInvite(event.$id)}
