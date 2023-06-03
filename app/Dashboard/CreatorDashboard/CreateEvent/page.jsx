@@ -256,9 +256,9 @@ const page = () => {
               {events.map((event) => (
                 <div key={event.$id} className="events">
                   <div dangerouslySetInnerHTML={{ __html: event.title }}></div>
-                  <div
+                  {/* <div
                     dangerouslySetInnerHTML={{ __html: event.description }}
-                  ></div>
+                  ></div> */}
                   <button
                     className="btn btn-success me-3"
                     onClick={() => handleEventClick(event.$id)}

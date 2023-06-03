@@ -13,12 +13,16 @@ const page = () => {
     password: "",
   });
 
+  const [isSigningIn, setIsSigningIn] = useState(false);
+
   const loginUser = async (e) => {
     e.preventDefault();
     const { email, password } = user;
 
     try {
-      // Login user
+      setIsSigningIn(true);
+
+      // Sign in user
       const sessionPromise = account.createEmailSession(email, password);
       const sessionResponse = await sessionPromise;
 
@@ -50,6 +54,8 @@ const page = () => {
     } catch (error) {
       console.log(error);
       alert(error);
+    } finally {
+      setIsSigningIn(false);
     }
   };
 
@@ -109,8 +115,9 @@ const page = () => {
                     type="submit"
                     className="btn btn-primary mb-3"
                     onClick={loginUser}
+                    disabled={isSigningIn}
                   >
-                    Sign In
+                    {isSigningIn ? "Signing In..." : "Sign In"}
                   </button>
                 </form>
               </div>
