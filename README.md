@@ -1,5 +1,41 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# Event Planner App
+
+This is an event planning app that allows users to create events, invite attendees, and manage RSVPs. The app is built using React.js for the frontend and Appwrite's database for storing event information and user authentication for secure login.
+
+# Features
+
+Users can create events with details such as date, time, location, and description.
+Users can invite attendees by email and manage RSVPs.
+Attendees can RSVP to events and view event details.
+Event organizers can manage RSVPs of attendees and send reminders or updates.
+Technologies Used
+React.js for the frontend
+Appwrite for backend services such as user authentication and database storage.
+Getting Started
+Clone the repository: git clone https://github.com/<your-username>/event-planner-app.git
+Install dependencies: npm install
+Start the development server: npm start
+Open the app in your browser: http://localhost:3000
+Contributing
+Contributions are always welcome! If you would like to contribute to this project, please follow these steps:
+
+Fork the repository: https://github.com/<your-username>/event-planner-app.git
+Create a new branch for your feature: git checkout -b feature/your-feature-name
+Make your changes and commit them: git commit -m "Your commit message"
+Push your changes to the remote branch: git push origin feature/your-feature-name
+Submit a pull request.
+
+# License
+
+This project is licensed under the MIT License.
+
+# Acknowledgements
+
+Appwrite for providing the backend services for this app.
+Next.js for providing the frontend framework for this app.
+
 ## Getting Started
 
 First, run the development server:
