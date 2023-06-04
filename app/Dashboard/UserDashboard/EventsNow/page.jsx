@@ -58,7 +58,7 @@ const page = () => {
   };
 
   const handleView = (eventId) => {
-    const eventPageUrl = `http://localhost:3000/Dashboard/UserDashboard/EventsNow/${eventId}`;
+    const eventPageUrl = `https://events.soumwadeepguha.com/Dashboard/UserDashboard/EventsNow/${eventId}`;
     // http://localhost:3000/Dashboard/UserDashboard/EventsNow
     window.location.replace(eventPageUrl);
   };
