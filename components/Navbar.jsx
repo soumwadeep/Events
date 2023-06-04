@@ -45,14 +45,6 @@ const Navbar = () => {
               </Link>
               <Link
                 className={`nav-link ${
-                  pathname === "/Pricing" ? "active" : ""
-                }`}
-                href="/Pricing"
-              >
-                Pricing
-              </Link>
-              <Link
-                className={`nav-link ${
                   pathname === "/Contact" ? "active" : ""
                 }`}
                 href="/Contact"
@@ -82,20 +74,12 @@ const Navbar = () => {
           href="/"
         >
           <i className="fa-solid fa-house icons"></i>
-          
         </Link>
         <Link
           className={`nav-link ${pathname === "/Features" ? "active" : ""}`}
           href="/Features"
         >
           <i className="fa-solid fa-bolt icons"></i>
-        </Link>
-        <Link
-          className={`nav-link ${pathname === "/Pricing" ? "active" : ""}`}
-          href="/Pricing"
-        >
-          <i className="fa-solid fa-dollar-sign icons"></i>
-          
         </Link>
         <Link
           className={`nav-link ${pathname === "/Contact" ? "active" : ""}`}
