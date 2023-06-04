@@ -255,3 +255,9 @@ select {
   background: transparent !important;
   border: 1px solid #f907fc !important;
 }
+/* Profile */
+.heading
+{
+  color: yellow;
+  font-weight: 700;
+}

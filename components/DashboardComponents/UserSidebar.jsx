@@ -11,7 +11,6 @@ const UserSidebar = () => {
     getData.then(
       function (response) {
         setUserDetails(response);
-
         const dataPromise = databases.listDocuments(
           "646df0f09aabfb2b250c",
           "646df0f8b0a70785de1f"
@@ -22,11 +21,10 @@ const UserSidebar = () => {
             const user = r.documents.find((doc) => doc.email === loggedInEmail);
             if (user) {
               const role = user.role;
-
               // Verify role and redirect accordingly
               if (role !== "User") {
                 alert(
-                  "You do not have permission to access this page. Please log in as a Creator."
+                  "You do not have permission to access this page. Please log in as a User."
                 );
                 window.location.replace("/SignIn");
               }
