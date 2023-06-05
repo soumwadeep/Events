@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 # Event Planner App
 
-This is an event planning app that allows users to create events, invite attendees, and manage RSVPs. The app is built using React.js for the frontend and Appwrite's database for storing event information and user authentication for secure login.
+This is an event planning app that allows users to create events, invite attendees, and manage RSVPs. The app is built using Next.js for the frontend and Appwrite's database for storing event information and user authentication for secure login.
 
 # Features
 
