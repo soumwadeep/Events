@@ -42,7 +42,6 @@ const Page = () => {
 
           getUserEvents.then(
             (events) => {
-              console.log(events);
               setRegisteredEvents(events.documents);
             },
             (error) => {
