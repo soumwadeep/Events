@@ -7,6 +7,7 @@ import UserSidebar from "@/components/DashboardComponents/UserSidebar";
 const page = () => {
   const [events, setEvents] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [userId, setUserId] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -14,6 +15,7 @@ const page = () => {
     account.get().then(
       (response) => {
         if (response.$id) {
+          setUserId(response.$id);
           const getEvents = databases.listDocuments(
             "646df0f09aabfb2b250c",
             "64714c8a1def3f1d523b"
@@ -43,18 +45,23 @@ const page = () => {
       }
     );
   }, []);
-
   const handleJoin = (eventId) => {
-    const eventPageUrl = `https://events.soumwadeepguha.com/Dashboard/CreatorDashboard/CreateEvent/${eventId}`;
-    navigator.clipboard
-      .writeText(eventPageUrl)
-      .then(() => {
-        alert("Event Page URL Copied To Clipboard");
-      })
-      .catch((error) => {
-        console.error(error);
-        alert("Failed To Copy Event Page URL");
-      });
+    const dId = Date.now().toString();
+    const docData = { eventId, userId };
+    const promise = databases.createDocument(
+      "646df0f09aabfb2b250c",
+      "6483cf17894217a4f50e",
+      dId,
+      docData
+    );
+    promise.then(
+      function (response) {
+        console.log(response); // Success
+      },
+      function (error) {
+        console.log(error); // Failure
+      }
+    );
   };
 
   const handleView = (eventId) => {

@@ -45,11 +45,13 @@ const page = () => {
   }, []);
 
   const handleInvite = (eventId) => {
-    const eventPageUrl = `https://events.soumwadeepguha.com/Dashboard/CreatorDashboard/CreateEvent/${eventId}`;
+    const eventPageUrl = `https://events.soumwadeepguha.com/Dashboard/UserDashboard/EventsNow/${eventId}`;
     navigator.clipboard
       .writeText(eventPageUrl)
       .then(() => {
-        alert("Event Page URL Copied To Clipboard");
+        alert(
+          "Event Page URL Copied To Clipboard.Now Share It Across In Social Media!"
+        );
       })
       .catch((error) => {
         console.error(error);
