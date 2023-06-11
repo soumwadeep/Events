@@ -58,8 +58,8 @@ const page = () => {
   };
 
   const handleView = (eventId) => {
-    const eventPageUrl = `https://events.soumwadeepguha.com/Dashboard/CreatorDashboard/CreateEvent/${eventId}`;
-    window.location.replace(eventPageUrl);
+    const eventPageUrl = `/Dashboard/CreatorDashboard/CreateEvent/${eventId}`;
+    router.push(eventPageUrl);
   };
 
   return (
