@@ -4,10 +4,11 @@ import { account, databases } from "@/components/AppwriteConfig";
 import { useRouter } from "next/navigation";
 import UserSidebar from "@/components/DashboardComponents/UserSidebar";
 
-const page = () => {
+const Page = () => {
   const [events, setEvents] = useState([]);
   const [loader, setLoader] = useState(false);
   const [userId, setUserId] = useState([]);
+  const [registeredEvents, setRegisteredEvents] = useState([]);
   const router = useRouter();
 
   useEffect(() => {
@@ -33,6 +34,22 @@ const page = () => {
             .finally(() => {
               setLoader(false);
             });
+
+          const getUserEvents = databases.listDocuments(
+            "646df0f09aabfb2b250c",
+            "6483cf17894217a4f50e"
+          );
+
+          getUserEvents.then(
+            (events) => {
+              console.log(events);
+              setRegisteredEvents(events.documents);
+            },
+            (error) => {
+              console.error(error);
+              alert("Failed To Fetch Registered Events");
+            }
+          );
         } else {
           console.log("You Are Not Logged In!");
           setLoader(false);
@@ -45,7 +62,17 @@ const page = () => {
       }
     );
   }, []);
+
   const handleJoin = (eventId) => {
+    const isRegistered = registeredEvents.some(
+      (event) => event.eventId === eventId
+    );
+
+    if (isRegistered) {
+      alert("You have already registered for this event.");
+      return;
+    }
+
     const dId = Date.now().toString();
     const docData = { eventId, userId };
     const promise = databases.createDocument(
@@ -57,9 +84,14 @@ const page = () => {
     promise.then(
       function (response) {
         console.log(response); // Success
+        setRegisteredEvents((prevEvents) => [
+          ...prevEvents,
+          { $id: dId, eventId },
+        ]);
       },
       function (error) {
         console.log(error); // Failure
+        alert("Failed to register for the event");
       }
     );
   };
@@ -83,9 +115,7 @@ const page = () => {
               {events.map((event) => (
                 <div key={event.$id} className="events">
                   <div dangerouslySetInnerHTML={{ __html: event.title }}></div>
-                  {/* <div
-                    dangerouslySetInnerHTML={{ __html: event.description }}
-                  ></div> */}
+                  {/* <div dangerouslySetInnerHTML={{ __html: event.description }}></div> */}
                   <button
                     className="btn btn-warning me-3"
                     onClick={() => handleView(event.$id)}
@@ -95,8 +125,13 @@ const page = () => {
                   <button
                     className="btn btn-success me-3"
                     onClick={() => handleJoin(event.$id)}
+                    disabled={registeredEvents.some(
+                      (e) => e.eventId === event.$id
+                    )}
                   >
-                    Join It
+                    {registeredEvents.some((e) => e.eventId === event.$id)
+                      ? "Registered"
+                      : "Join It"}
                   </button>
                 </div>
               ))}
@@ -108,4 +143,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
