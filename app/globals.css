@@ -261,3 +261,9 @@ select {
   color: yellow;
   font-weight: 700;
 }
+.participatedevents
+{
+  background: wheat;
+  padding: 10px;
+  border-radius: 20px;
+}

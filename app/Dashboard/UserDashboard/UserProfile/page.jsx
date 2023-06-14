@@ -2,11 +2,13 @@
 import { useEffect, useState } from "react";
 import { account, databases } from "@/components/AppwriteConfig";
 import UserSidebar from "@/components/DashboardComponents/UserSidebar";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const [userDetails, setUserDetails] = useState();
   const [userProfile, setUserProfile] = useState();
   const [userEvents, setUserEvents] = useState();
+  const router = useRouter();
 
   useEffect(() => {
     const getData = account.get();
@@ -18,6 +20,7 @@ const Page = () => {
       );
       dataPromise.then(function (r) {
         const loggedInEmail = response.email;
+        console.log(response.email);
         const user = r.documents.find((doc) => doc.email === loggedInEmail);
         setUserProfile(user);
       });
@@ -32,7 +35,6 @@ const Page = () => {
 
     promise.then(
       function (EventsAttended) {
-        console.log(EventsAttended.documents);
         setUserEvents(EventsAttended.documents);
       },
       function (error) {
@@ -40,6 +42,18 @@ const Page = () => {
       }
     );
   }, []);
+
+  const loggedInUserId = userDetails ? userDetails.$id : null;
+
+  const userRegisteredEvents = userEvents
+    ? userEvents.filter((event) => event.userId === loggedInUserId)
+    : [];
+
+  const handleAttend = (eventId) => {
+    window.location.replace(
+      `https://events.soumwadeepguha.com/Dashboard/UserDashboard/EventsNow/${eventId}`
+    );
+  };
 
   return (
     <div>
@@ -83,17 +97,29 @@ const Page = () => {
           </div>
           <div className="row">
             <h2>Your Participated Events:</h2>
-            {userEvents ? (
-              userEvents.map((event) => (
-                <div key={event.$id}>
-                  <h4>{event.title}</h4>
-                  <p>Date: {event.date}</p>
-                  <p>Location: {event.location}</p>
-                  {/* Add more event details as needed */}
+            {userRegisteredEvents.length > 0 ? (
+              userRegisteredEvents.map((event) => (
+                <div className="participatedevents" key={event.$id}>
+                  <h4>Event Title:</h4>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: event.eventTitle }}
+                  ></div>
+                  <h5>Event Description:</h5>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: event.eventDescription,
+                    }}
+                  ></div>
+                  <button
+                    className="btn btn-warning me-3"
+                    onClick={() => handleAttend(event.$id)}
+                  >
+                    View
+                  </button>
                 </div>
               ))
             ) : (
-              <h4>Loading...</h4>
+              <h4>No Participated Events Found.</h4>
             )}
           </div>
         </div>

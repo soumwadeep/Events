@@ -25,6 +25,7 @@ const Page = () => {
             .then(
               (events) => {
                 setEvents(events.documents);
+                console.log(events.documents);
               },
               (error) => {
                 console.error(error);
@@ -62,7 +63,7 @@ const Page = () => {
     );
   }, []);
 
-  const handleJoin = (eventId) => {
+  const handleJoin = (eventId, eventTitle, eventDescription) => {
     const isRegistered = registeredEvents.some(
       (event) => event.eventId === eventId && event.userId === userId
     );
@@ -73,7 +74,7 @@ const Page = () => {
     }
 
     const dId = Date.now().toString();
-    const docData = { eventId, userId };
+    const docData = { eventId, userId, eventTitle, eventDescription };
     const promise = databases.createDocument(
       "646df0f09aabfb2b250c",
       "6483cf17894217a4f50e",
@@ -85,7 +86,7 @@ const Page = () => {
         console.log(response); // Success
         setRegisteredEvents((prevEvents) => [
           ...prevEvents,
-          { $id: dId, eventId, userId },
+          { $id: dId, eventId, userId, eventTitle, eventDescription },
         ]);
       },
       function (error) {
@@ -129,7 +130,9 @@ const Page = () => {
                         ? "disabled"
                         : ""
                     }`}
-                    onClick={() => handleJoin(event.$id)}
+                    onClick={() =>
+                      handleJoin(event.$id, event.title, event.description)
+                    }
                     disabled={registeredEvents.some(
                       (e) => e.eventId === event.$id && e.userId === userId
                     )}
