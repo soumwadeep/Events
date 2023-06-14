@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { account, databases } from "@/components/AppwriteConfig";
 import UserSidebar from "@/components/DashboardComponents/UserSidebar";
 
-const page = () => {
+const Page = () => {
   const [userDetails, setUserDetails] = useState();
   const [userProfile, setUserProfile] = useState();
+  const [userEvents, setUserEvents] = useState();
+
   useEffect(() => {
     const getData = account.get();
     getData.then(function (response) {
@@ -20,6 +22,23 @@ const page = () => {
         setUserProfile(user);
       });
     });
+  }, []);
+
+  useEffect(() => {
+    let promise = databases.listDocuments(
+      "646df0f09aabfb2b250c",
+      "6483cf17894217a4f50e"
+    );
+
+    promise.then(
+      function (EventsAttended) {
+        console.log(EventsAttended.documents);
+        setUserEvents(EventsAttended.documents);
+      },
+      function (error) {
+        console.log(error);
+      }
+    );
   }, []);
 
   return (
@@ -64,7 +83,18 @@ const page = () => {
           </div>
           <div className="row">
             <h2>Your Participated Events:</h2>
-            <h4>No Participation Yet.</h4>
+            {userEvents ? (
+              userEvents.map((event) => (
+                <div key={event.$id}>
+                  <h4>{event.title}</h4>
+                  <p>Date: {event.date}</p>
+                  <p>Location: {event.location}</p>
+                  {/* Add more event details as needed */}
+                </div>
+              ))
+            ) : (
+              <h4>Loading...</h4>
+            )}
           </div>
         </div>
       </div>
@@ -72,4 +102,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

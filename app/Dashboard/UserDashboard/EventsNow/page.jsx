@@ -64,7 +64,7 @@ const Page = () => {
 
   const handleJoin = (eventId) => {
     const isRegistered = registeredEvents.some(
-      (event) => event.eventId === eventId
+      (event) => event.eventId === eventId && event.userId === userId
     );
 
     if (isRegistered) {
@@ -85,7 +85,7 @@ const Page = () => {
         console.log(response); // Success
         setRegisteredEvents((prevEvents) => [
           ...prevEvents,
-          { $id: dId, eventId },
+          { $id: dId, eventId, userId },
         ]);
       },
       function (error) {
@@ -122,13 +122,21 @@ const Page = () => {
                     View
                   </button>
                   <button
-                    className="btn btn-success me-3"
+                    className={`btn btn-success me-3 ${
+                      registeredEvents.some(
+                        (e) => e.eventId === event.$id && e.userId === userId
+                      )
+                        ? "disabled"
+                        : ""
+                    }`}
                     onClick={() => handleJoin(event.$id)}
                     disabled={registeredEvents.some(
-                      (e) => e.eventId === event.$id
+                      (e) => e.eventId === event.$id && e.userId === userId
                     )}
                   >
-                    {registeredEvents.some((e) => e.eventId === event.$id)
+                    {registeredEvents.some(
+                      (e) => e.eventId === event.$id && e.userId === userId
+                    )
                       ? "Registered"
                       : "Join It"}
                   </button>
