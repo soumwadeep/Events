@@ -8,6 +8,7 @@ const Page = () => {
   const [events, setEvents] = useState([]);
   const [loader, setLoader] = useState(false);
   const [userId, setUserId] = useState([]);
+  const [userDetails, setUserDetails] = useState([]);
   const [registeredEvents, setRegisteredEvents] = useState([]);
   const router = useRouter();
 
@@ -17,6 +18,7 @@ const Page = () => {
       (response) => {
         if (response.$id) {
           setUserId(response.$id);
+          setUserDetails(response);
           const getEvents = databases.listDocuments(
             "646df0f09aabfb2b250c",
             "64714c8a1def3f1d523b"
@@ -25,7 +27,7 @@ const Page = () => {
             .then(
               (events) => {
                 setEvents(events.documents);
-                console.log(events.documents);
+                // console.log(events.documents);
               },
               (error) => {
                 console.error(error);
@@ -35,7 +37,6 @@ const Page = () => {
             .finally(() => {
               setLoader(false);
             });
-
           const getUserEvents = databases.listDocuments(
             "646df0f09aabfb2b250c",
             "6483cf17894217a4f50e"
@@ -63,7 +64,15 @@ const Page = () => {
     );
   }, []);
 
-  const handleJoin = (eventId, eventTitle, eventDescription) => {
+  // console.log("Data",userDetails)
+  const handleJoin = (
+    eventId,
+    eventTitle,
+    eventDescription,
+    attendeeName,
+    attendeeEmail,
+    attendeePhone
+  ) => {
     const isRegistered = registeredEvents.some(
       (event) => event.eventId === eventId && event.userId === userId
     );
@@ -74,7 +83,15 @@ const Page = () => {
     }
 
     const dId = Date.now().toString();
-    const docData = { eventId, userId, eventTitle, eventDescription };
+    const docData = {
+      eventId,
+      userId,
+      eventTitle,
+      eventDescription,
+      attendeeName,
+      attendeePhone,
+      attendeeEmail,
+    };
     const promise = databases.createDocument(
       "646df0f09aabfb2b250c",
       "6483cf17894217a4f50e",
@@ -83,10 +100,19 @@ const Page = () => {
     );
     promise.then(
       function (response) {
-        console.log(response); // Success
+        console.log("Response", response); // Success
         setRegisteredEvents((prevEvents) => [
           ...prevEvents,
-          { $id: dId, eventId, userId, eventTitle, eventDescription },
+          {
+            $id: dId,
+            eventId,
+            userId,
+            eventTitle,
+            eventDescription,
+            attendeeName,
+            attendeeEmail,
+            attendeePhone,
+          },
         ]);
       },
       function (error) {
@@ -131,7 +157,14 @@ const Page = () => {
                         : ""
                     }`}
                     onClick={() =>
-                      handleJoin(event.$id, event.title, event.description)
+                      handleJoin(
+                        event.$id,
+                        event.title,
+                        event.description,
+                        userDetails.name, // Update with attendeeName
+                        userDetails.email, // Update with attendeeEmail
+                        userDetails.$id // Update with attendeePhone
+                      )
                     }
                     disabled={registeredEvents.some(
                       (e) => e.eventId === event.$id && e.userId === userId

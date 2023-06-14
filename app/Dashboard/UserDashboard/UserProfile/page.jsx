@@ -77,7 +77,7 @@ const Page = () => {
             <div className="col-sm">
               {userProfile ? (
                 <h4 className="heading">
-                  Addresss: {userProfile.address}
+                  Address: {userProfile.address}
                   <br />
                   City: {userProfile.city}
                   <br />
@@ -99,17 +99,17 @@ const Page = () => {
                   <div
                     dangerouslySetInnerHTML={{ __html: event.eventTitle }}
                   ></div>
-                  <h5>Event Description:</h5>
+                  {/* <h5>Event Description:</h5>
                   <div
                     dangerouslySetInnerHTML={{
                       __html: event.eventDescription,
                     }}
-                  ></div>
+                  ></div> */}
                   <button
-                    className="btn btn-warning me-3"
+                    className="btn btn-success me-3"
                     onClick={() => handleAttend(event.eventId)}
                   >
-                    View
+                    Attend
                   </button>
                 </div>
               ))
