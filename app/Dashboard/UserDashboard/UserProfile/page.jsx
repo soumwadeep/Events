@@ -20,7 +20,6 @@ const Page = () => {
       );
       dataPromise.then(function (r) {
         const loggedInEmail = response.email;
-        console.log(response.email);
         const user = r.documents.find((doc) => doc.email === loggedInEmail);
         setUserProfile(user);
       });
@@ -32,7 +31,6 @@ const Page = () => {
       "646df0f09aabfb2b250c",
       "6483cf17894217a4f50e"
     );
-
     promise.then(
       function (EventsAttended) {
         setUserEvents(EventsAttended.documents);
@@ -48,11 +46,8 @@ const Page = () => {
   const userRegisteredEvents = userEvents
     ? userEvents.filter((event) => event.userId === loggedInUserId)
     : [];
-
   const handleAttend = (eventId) => {
-    window.location.replace(
-      `https://events.soumwadeepguha.com/Dashboard/UserDashboard/EventsNow/${eventId}`
-    );
+    router.push(`/Dashboard/UserDashboard/EventsNow/${eventId}`);
   };
 
   return (
@@ -112,7 +107,7 @@ const Page = () => {
                   ></div>
                   <button
                     className="btn btn-warning me-3"
-                    onClick={() => handleAttend(event.$id)}
+                    onClick={() => handleAttend(event.eventId)}
                   >
                     View
                   </button>
