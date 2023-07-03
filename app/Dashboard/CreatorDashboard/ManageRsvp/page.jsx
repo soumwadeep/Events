@@ -44,9 +44,29 @@ const page = () => {
     );
   }, []);
 
-  const handleView = (eventId) => {
-    const eventPageUrl = `/Dashboard/CreatorDashboard/CreateEvent/${eventId}`;
-    router.push(eventPageUrl);
+  // const handleView = (eventId) => {
+  //   const eventPageUrl = `/Dashboard/CreatorDashboard/CreateEvent/${eventId}`;
+  //   router.push(eventPageUrl);
+  // };
+
+  const handleDelete = ($id) => {
+    const promise = databases.deleteDocument(
+      "646df0f09aabfb2b250c",
+      "6483cf17894217a4f50e",
+      $id
+    );
+
+    promise.then(
+      function (response) {
+        alert("RSVP Revoked Successfully!"); // Success
+        console.log(response);
+        window.location.reload();
+      },
+      function (error) {
+        alert("RSVP Can't Be Revoked!");
+        console.log(error); // Failure
+      }
+    );
   };
 
   return (
@@ -91,17 +111,17 @@ const page = () => {
                       ></div>
                     </div>
                   </div>
-                  <button
+                  {/* <button
                     className="btn btn-warning me-3"
                     onClick={() => handleView(event.eventId)}
                   >
                     View
-                  </button>
+                  </button> */}
                   <button
                     className="btn btn-danger me-3"
-                    onClick={() => handleDelete()}
+                    onClick={() => handleDelete(event.$id)}
                   >
-                    Revoke
+                    Revoke User's RSVP
                   </button>
                 </div>
               ))}
