@@ -146,7 +146,11 @@ const Page = () => {
                     className="btn btn-warning me-3"
                     onClick={() => handleView(event.$id)}
                   >
-                    View
+                    {registeredEvents.some(
+                      (e) => e.eventId === event.$id && e.userId === userId
+                    )
+                      ? "Attend"
+                      : "View"}
                   </button>
                   <button
                     className={`btn btn-success me-3 ${

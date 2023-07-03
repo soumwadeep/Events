@@ -47,7 +47,7 @@ const Page = () => {
     ? userEvents.filter((event) => event.userId === loggedInUserId)
     : [];
   const handleAttend = (eventId) => {
-    router.push(`/Dashboard/UserDashboard/EventsNow/${eventId}`);
+    router.push(`/Dashboard/UserDashboard/EventsNow/`);
   };
 
   return (
@@ -107,7 +107,7 @@ const Page = () => {
                   ></div> */}
                   <button
                     className="btn btn-success me-3"
-                    onClick={() => handleAttend(event.eventId)}
+                    onClick={() => handleAttend()}
                   >
                     Attend
                   </button>
